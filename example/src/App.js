@@ -1,10 +1,10 @@
 import React from 'react'
 
-import { ExampleComponent } from 'bare-minimum-2d'
+import { BareMinimum2d } from 'bare-minimum-2d'
 import 'bare-minimum-2d/dist/index.css'
 
 const App = () => {
-  return <ExampleComponent text="Create React Library Example 😄" />
+  return <BareMinimum2d color='#00ff00' />
 }
 
 export default App
