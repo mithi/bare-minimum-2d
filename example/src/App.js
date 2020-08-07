@@ -67,8 +67,22 @@ const hexagon = {
   id: 'sampleHexagon'
 }
 
+const [h, w] = [15, 20]
+const square = {
+  x: [-w, w, w, -w],
+  y: [-h, -h, h, h],
+  fillColor: '#ffff00',
+  fillOpacity: 0.3,
+  borderColor: '#ffff00',
+  borderOpacity: 1.0,
+  borderSize: 1,
+  type: 'polygon',
+  id: 'sampleSquare'
+}
+
+
 const App = () => {
-  const props = { container, data: [points1, points2, lines1, lines2, hexagon] }
+  const props = { container, data: [points1, points2, lines1, lines2, hexagon, square] }
   return (
     <div style={{ height: '300px', width: '700px' }}>
       <BareMinimum2d {...props} />

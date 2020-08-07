@@ -1,5 +1,4 @@
 import React from 'react'
-// import styles from './styles.module.css'
 
 let XRANGE = null
 let YRANGE = null
@@ -124,6 +123,7 @@ const Polygon = ({
 }
 const Polygons = ({ polygonSets }) =>
   polygonSets.map((polygon) => <Polygon {...polygon} key={polygon.id} />)
+
 /**************************
  * Minimal Plot
  **************************/
