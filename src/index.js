@@ -13,7 +13,7 @@ const svgProps = {
   version: '1.1',
   baseProfile: 'full',
   xmlns: 'http://www.w3.org/2000/svg',
-  preserveAspectRatio: 'xMinYMid slice',
+  preserveAspectRatio: 'xMidYMid slice',
   width: '100%',
   height: '100%'
 }
@@ -41,8 +41,8 @@ const Paper = ({ container }) => (
 const PointDefinition = ({ size, color, opacity, id }) => (
   <circle cx={0} cy={0} r={size} fill={color} opacity={opacity} id={id} />
 )
-const PointDefinitions = ({ pointSets }) => {
-  const pointDefinitions = pointSets.map((elementSet) => (
+const PointDefinitions = ({ sets }) => {
+  const pointDefinitions = sets.map((elementSet) => (
     <PointDefinition {...elementSet} key={elementSet.id} />
   ))
   return <defs>{pointDefinitions}</defs>
@@ -61,8 +61,8 @@ const createPointInstances = (points) => {
   })
 }
 
-const Points = ({ pointSets }) =>
-  pointSets.reduce(
+const Points = ({ sets }) =>
+  sets.reduce(
     (points, pointSet) => [...points, createPointInstances(pointSet)],
     []
   )
@@ -86,8 +86,8 @@ const LineSet = ({ size, color, opacity, x0, x1, y0, y1, id }) => {
   )
 }
 
-const Lines = ({ lineSets }) =>
-  lineSets.map((lineSet) => <LineSet {...lineSet} key={lineSet.id} />)
+const Lines = ({ sets }) =>
+  sets.map((lineSet) => <LineSet {...lineSet} key={lineSet.id} />)
 
 /**************************
  * Polygon
@@ -121,8 +121,8 @@ const Polygon = ({
     />
   )
 }
-const Polygons = ({ polygonSets }) =>
-  polygonSets.map((polygon) => <Polygon {...polygon} key={polygon.id} />)
+const Polygons = ({ sets }) =>
+  sets.map((polygon) => <Polygon {...polygon} key={polygon.id} />)
 
 /**************************
  * Minimal Plot
@@ -143,10 +143,10 @@ const BareMinimum2d = ({ container, data }) => {
   return (
     <svg {...svgProps} viewBox={view}>
       <Paper container={container} />
-      <PointDefinitions pointSets={pointSets} />
-      <Polygons polygonSets={polygonSets} />
-      <Lines lineSets={lineSets} />
-      <Points pointSets={pointSets} />
+      <PointDefinitions sets={pointSets} />
+      <Polygons sets={polygonSets} />
+      <Lines sets={lineSets} />
+      <Points sets={pointSets} />
     </svg>
   )
 }

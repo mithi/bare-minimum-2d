@@ -1,7 +1,5 @@
 import React from 'react'
-
 import { BareMinimum2d } from 'bare-minimum-2d'
-import 'bare-minimum-2d/dist/index.css'
 
 const container = {
   color: '#0000FF',
@@ -80,14 +78,20 @@ const square = {
   id: 'sampleSquare'
 }
 
+const Plot = ({ container, data, width, height }) => (
+  <div style={{ height, width }}>
+    <BareMinimum2d data={data} container={container} />
+  </div>
+)
 
 const App = () => {
-  const props = { container, data: [points1, points2, lines1, lines2, hexagon, square] }
-  return (
-    <div style={{ height: '300px', width: '700px' }}>
-      <BareMinimum2d {...props} />
-    </div>
-  )
+  const props = {
+    container,
+    data: [points1, points2, lines1, lines2, hexagon, square],
+    width: '100%',
+    height: window.innerHeight
+  }
+  return <Plot {...props} />
 }
 
 export default App
