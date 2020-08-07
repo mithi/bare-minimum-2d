@@ -30,8 +30,20 @@ const points2 = {
   id: 'purple3'
 }
 
+const lines1 = {
+  x0: [10, -10],
+  y0: [10, 10],
+  x1: [30, -30],
+  y1: [20, -50],
+  color: '#000000',
+  size: 5,
+  opacity: 0.5,
+  type: 'lines',
+  id: 'samplelines'
+}
+
 const App = () => {
-  const props = { container, data: [points1, points2] }
+  const props = { container, data: [points1, points2, lines1] }
   return (
     <div style={{ height: '300px', width: '700px' }}>
       <BareMinimum2d {...props} />
