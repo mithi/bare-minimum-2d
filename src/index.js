@@ -10,6 +10,14 @@ const transformX = (x, xRange) => x + xRange / 2
 // canvasY = yRangeMax - y
 const transformY = (y, yRange) => yRange / 2 - y
 
+const svgProps = {
+  version: '1.1',
+  baseProfile: 'full',
+  xmlns: 'http://www.w3.org/2000/svg',
+  preserveAspectRatio: 'xMinYMid slice',
+  width: '100%',
+  height: '100%'
+}
 /***
                   yRange/2
                      |
@@ -28,66 +36,47 @@ const Paper = ({ container }) => (
   />
 )
 
-const Point = ({ size, color, opacity, id }) => (
+const PointDefinition = ({ size, color, opacity, id }) => (
   <circle cx={0} cy={0} r={size} fill={color} opacity={opacity} id={id} />
 )
-const createDefinition = (elementSet) => {
-  if (elementSet.type === 'points') {
-    return <Point {...elementSet} key={elementSet.id} />
-  }
+const PointDefinitions = ({ pointSets }) => {
+  const pointDefinitions = pointSets.map((elementSet) => (
+    <PointDefinition {...elementSet} key={elementSet.id} />
+  ))
+  return <defs>{pointDefinitions}</defs>
 }
 
-const Definitions = ({ data }) => {
-  const definitions = data.map((elementSet) => createDefinition(elementSet))
-  return <defs>{definitions}</defs>
-}
-
-const svgProps = {
-  version: '1.1',
-  baseProfile: 'full',
-  xmlns: 'http://www.w3.org/2000/svg',
-  preserveAspectRatio: 'xMinYMid slice',
-  width: '100%',
-  height: '100%'
-}
-
-const createElementInstances = (elements) => {
-  return elements.x.map((x, i) => {
+const createPointInstances = (points) => {
+  return points.x.map((x, i) => {
     return (
       <use
         x={transformX(x, XRANGE)}
-        y={transformY(elements.y[i], YRANGE)}
-        href={`#${elements.id}`}
-        key={elements.id + i}
+        y={transformY(points.y[i], YRANGE)}
+        href={`#${points.id}`}
+        key={points.id + i}
       />
     )
   })
 }
+
+const Points = ({ pointSets }) =>
+  pointSets.reduce(
+    (points, pointSet) => [...points, createPointInstances(pointSet)],
+    []
+  )
+
 const BareMinimum2d = ({ container, data }) => {
   XRANGE = container.xRange
   YRANGE = container.yRange
-  const cx = transformX(20, container.xRange)
-  const cy = transformY(10, container.yRange)
   const view = `0 0 ${container.xRange} ${container.yRange}`
-  const elements = data.reduce((elementsArray, elementSet) => {
-    const elementsSubArray = createElementInstances(elementSet)
-    return [elementsArray, ...elementsSubArray]
-  }, [])
+
+  const pointSets = data.filter((elementSet) => elementSet.type === 'points')
 
   return (
     <svg {...svgProps} viewBox={view}>
       <Paper container={container} />
-      <Definitions data={data} />
-      <circle
-        cx={cx}
-        cy={cy}
-        r='3'
-        stroke='black'
-        strokeWidth='2'
-        fill='blue'
-      />
-
-      {elements}
+      <PointDefinitions pointSets={pointSets} />
+      <Points pointSets={pointSets} />
     </svg>
   )
 }
