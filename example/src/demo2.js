@@ -1,0 +1,91 @@
+import React from 'react'
+import { BareMinimum2d } from 'bare-minimum-2d'
+
+const BACKGROUND_COLOR = '#5352ed'
+const LINE_COLOR = '#ff6b81'
+const BG_OPACITY = 0.75
+const LINE_OPACITY = 0.5
+const LINE_SIZE = 2
+
+const STICKY_DIV_STYLE = {
+  position: 'fixed',
+  top: 0,
+  fontSize: 10,
+  color: LINE_COLOR
+}
+
+class DemoTwo extends React.PureComponent {
+  intervalID = null
+  t = 0
+  animationDelay = 50
+  container = {
+    color: BACKGROUND_COLOR,
+    opacity: BG_OPACITY,
+    xRange: 1000,
+    yRange: 5000
+  }
+  state = {
+    data: []
+  }
+
+  componentDidMount() {
+    this.intervalID = setInterval(this.animate, this.animationDelay)
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.intervalID)
+  }
+
+  animate = () => {
+    this.setState({
+      data: [linesInFrame(this.t)]
+    })
+    this.t++
+  }
+
+  render() {
+    return (
+      <div style={{ width: '100%', height: '500px' }}>
+        <BareMinimum2d container={this.container} data={this.state.data} />
+        <div style={STICKY_DIV_STYLE}>{this.t}</div>
+      </div>
+    )
+  }
+}
+
+const linesInFrame = (t) => {
+  let [x0, x1, y0, y1] = [[], [], [], []]
+
+  for (let i = 0; i < 100; i++) {
+    x0.push(fx0(t + i))
+    y0.push(fy0(t + i))
+    x1.push(fx1(t + i) + 20)
+    y1.push(fy1(t + i) + 20)
+  }
+
+  return {
+    x0,
+    y0,
+    x1,
+    y1,
+    size: LINE_SIZE,
+    color: LINE_COLOR,
+    opacity: LINE_OPACITY,
+    type: 'lines',
+    id: 'animating-lines-with-patterns'
+  }
+}
+
+const fx0 = (t) =>
+  Math.sin(t / 10) * 125 + Math.sin(t / 20) * 125 + Math.sin(t / 30) * 125
+
+const fy0 = (t) =>
+  Math.cos(t / 10) * 125 + Math.cos(t / 20) * 125 + Math.cos(t / 30) * 125
+
+const fx1 = (t) =>
+  Math.sin(t / 15) * 125 + Math.sin(t / 25) * 125 + Math.sin(t / 35) * 125
+
+const fy1 = (t) =>
+  Math.cos(t / 15) * 125 + Math.cos(t / 25) * 125 + Math.cos(t / 35) * 125
+
+export default DemoTwo
