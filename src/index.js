@@ -61,8 +61,8 @@ class BareMinimum2d extends React.PureComponent {
         <Paper {...{ color, opacity }} />
         <PointDefinitions sets={pointSets} />
         <Polygons sets={polygonSets} {...{ transforms }} />
-        <Ellipses sets={ellipseSets} {...{ transforms }} />
         <Lines sets={lineSets} {...{ transforms }} />
+        <Ellipses sets={ellipseSets} {...{ transforms }} />
         <Points sets={pointSets} {...{ transforms }} />
       </svg>
     )
