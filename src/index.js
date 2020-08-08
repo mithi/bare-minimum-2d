@@ -1,5 +1,5 @@
 import React from 'react'
-import { PointDefinitions, Points, Lines, Polygons } from './shapes'
+import { PointDefinitions, Points, Lines, Polygons, Ellipses } from './shapes'
 
 const svgProps = {
   version: '1.1',
@@ -46,6 +46,7 @@ class BareMinimum2d extends React.PureComponent {
     const pointSets = filterSet(data, 'points')
     const lineSets = filterSet(data, 'lines')
     const polygonSets = filterSet(data, 'polygon')
+    const ellipseSets = filterSet(data, 'ellipse')
 
     const transforms = {
       tx: this.transformX,
@@ -60,6 +61,7 @@ class BareMinimum2d extends React.PureComponent {
         <Paper {...{ color, opacity }} />
         <PointDefinitions sets={pointSets} />
         <Polygons sets={polygonSets} {...{ transforms }} />
+        <Ellipses sets={ellipseSets} {...{ transforms }} />
         <Lines sets={lineSets} {...{ transforms }} />
         <Points sets={pointSets} {...{ transforms }} />
       </svg>

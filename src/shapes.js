@@ -93,4 +93,44 @@ const Polygons = ({ sets, transforms }) =>
     <Polygon {...polygon} {...{ transforms }} key={polygon.id} />
   ))
 
-export { PointDefinitions, Points, Lines, Polygons }
+/**************************
+ * Ellipse
+ **************************/
+const Ellipse = ({
+  cx,
+  cy,
+  rx,
+  ry,
+  theta,
+  fillColor,
+  fillOpacity,
+  borderColor,
+  borderOpacity,
+  borderSize,
+  transforms,
+  id
+}) => {
+  const newCx = transforms.tx(cx)
+  const newCy = transforms.ty(cy)
+
+  const props = {
+    cx: newCx,
+    cy: newCy,
+    rx,
+    ry,
+    fill: fillColor,
+    stroke: borderColor,
+    strokeWidth: borderSize,
+    strokeOpacity: borderOpacity,
+    id,
+    fillOpacity,
+    transform: `rotate(${theta}, ${newCx}, ${newCy})`
+  }
+  return <ellipse {...props} />
+}
+const Ellipses = ({ sets, transforms }) =>
+  sets.map((ellipse) => (
+    <Ellipse {...ellipse} {...{ transforms }} key={ellipse.id} />
+  ))
+
+export { PointDefinitions, Points, Lines, Polygons, Ellipses }
