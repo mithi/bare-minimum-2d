@@ -1,11 +1,23 @@
 import React from 'react'
 import { BareMinimum2d } from 'bare-minimum-2d'
 
-const BACKGROUND_COLOR = '#5352ed'
-const LINE_COLOR = '#ff6b81'
-const BG_OPACITY = 0.75
-const LINE_OPACITY = 0.5
+const X_RANGE = 1000
+const Y_RANGE = 2000
+const OFFSET = 20
+const BACKGROUND_COLOR = '#2f3542'
+const LINE_COLOR = '#ff4757'
+const BG_OPACITY = 1.0
+const LINE_OPACITY = 0.75
 const LINE_SIZE = 2
+const ANIMATION_DELAY = 10
+const RANDOMNESS = 1000
+const IMAGE_SIZE = '400px'
+const CONTAINER = {
+  color: BACKGROUND_COLOR,
+  opacity: BG_OPACITY,
+  xRange: X_RANGE,
+  yRange: Y_RANGE
+}
 
 const STICKY_DIV_STYLE = {
   position: 'fixed',
@@ -16,20 +28,13 @@ const STICKY_DIV_STYLE = {
 
 class DemoTwo extends React.PureComponent {
   intervalID = null
-  t = 0
-  animationDelay = 50
-  container = {
-    color: BACKGROUND_COLOR,
-    opacity: BG_OPACITY,
-    xRange: 1000,
-    yRange: 5000
-  }
+  t = Math.floor(Math.random() * RANDOMNESS)
   state = {
     data: []
   }
 
   componentDidMount() {
-    this.intervalID = setInterval(this.animate, this.animationDelay)
+    this.intervalID = setInterval(this.animate, ANIMATION_DELAY)
   }
 
   componentWillUnmount() {
@@ -45,8 +50,8 @@ class DemoTwo extends React.PureComponent {
 
   render() {
     return (
-      <div style={{ width: '100%', height: '500px' }}>
-        <BareMinimum2d container={this.container} data={this.state.data} />
+      <div style={{ width: '100%', height: IMAGE_SIZE }}>
+        <BareMinimum2d container={CONTAINER} data={this.state.data} />
         <div style={STICKY_DIV_STYLE}>{this.t}</div>
       </div>
     )
@@ -59,8 +64,8 @@ const linesInFrame = (t) => {
   for (let i = 0; i < 100; i++) {
     x0.push(fx0(t + i))
     y0.push(fy0(t + i))
-    x1.push(fx1(t + i) + 20)
-    y1.push(fy1(t + i) + 20)
+    x1.push(fx1(t + i) + OFFSET)
+    y1.push(fy1(t + i) + OFFSET)
   }
 
   return {
