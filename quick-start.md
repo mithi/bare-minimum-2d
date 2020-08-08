@@ -31,7 +31,7 @@ diagram below given `container.xRange` and `container.yRange`.
 Position (0, 0) will always be at the center of the rendered component.
 See diagram below.
 
-```
+```js
                   yRange/2
                      |
                      |
@@ -47,7 +47,6 @@ the following
 
 - "lines" (plural)
 - "points" (plural)
-- "markers" (plural)
 - "polygon" (singular)
 - "ellipse" (singular)
 
@@ -56,18 +55,6 @@ Then ellipses, lines, points, and finally markers. Elements will be stacked base
 on the order they are declared. So the last element declared of type `markers`
 in the `data` array will be at the most top layer. While the first polygon in the
 `data` array will be rendered at the most bottom layer.
-
-If an element is of type `markers`, don't forget to specify a`markerType`
-which should be one of the following:
-
-- "plus"
-- "plus-circle"
-- "plus-square"
-- "triangle"
-- "alert-triangle"
-- "arrow-up"
-
-These markers are copied from feather icons.
 
 Please checkout `example1`, `example2`, and `example3` to learn how to specify
 attributes of each elements. All attributes are required, nothing is optional.
