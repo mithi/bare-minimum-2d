@@ -8,22 +8,9 @@ const svgProps = {
   width: '100%',
   height: '100%'
 }
-/***
-                  yRange/2
-                     |
-                     |
-  -xRange/2 -------(0,0)--------- xRange/2
-                     |
-                     |
-                   -yRange/2
-  ***/
-const Paper = ({ container }) => (
-  <rect
-    width='100%'
-    height='100%'
-    fill={container.color}
-    opacity={container.opacity}
-  />
+
+const Paper = ({ color, opacity }) => (
+  <rect width='100%' height='100%' fill={color} opacity={opacity} />
 )
 
 /**************************
@@ -127,16 +114,27 @@ const filterSet = (data, type) =>
   data.filter((dataSet) => dataSet.type === type)
 
 class BareMinimum2d extends React.PureComponent {
-  container = null
+  xRange = null
+  yRange = null
 
-  transformX = (x) => x + this.container.xRange / 2
-  transformY = (y) => this.container.yRange / 2 - y
+  /***
+                  yRange/2
+                     |
+                     |
+  -xRange/2 -------(0,0)--------- xRange/2
+                     |
+                     |
+                   -yRange/2
+  ***/
+
+  transformX = (x) => x + this.xRange / 2
+  transformY = (y) => this.yRange / 2 - y
 
   render() {
     const { container, data } = this.props
-    this.container = container
+    this.xRange = container.xRange
+    this.yRange = container.yRange
 
-    const viewBox = `0 0 ${container.xRange} ${container.yRange}`
     const pointSets = filterSet(data, 'points')
     const lineSets = filterSet(data, 'lines')
     const polygonSets = filterSet(data, 'polygon')
@@ -146,9 +144,12 @@ class BareMinimum2d extends React.PureComponent {
       ty: this.transformY
     }
 
+    const viewBox = `0 0 ${container.xRange} ${container.yRange}`
+    const { color, opacity } = container
+
     return (
       <svg {...svgProps} {...{ viewBox }}>
-        <Paper {...{ container }} />
+        <Paper {...{ color, opacity }} />
         <PointDefinitions sets={pointSets} />
         <Polygons sets={polygonSets} {...{ transforms }} />
         <Lines sets={lineSets} {...{ transforms }} />
