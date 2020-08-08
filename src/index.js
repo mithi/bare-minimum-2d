@@ -151,48 +151,4 @@ const BareMinimum2d = ({ container, data }) => {
   )
 }
 
-/**************************
- * Full Height Plot
- **************************/
-
-const FullHeightPlot = ({ container, data, width }) => {
-  const [height, setHeight] = React.useState(window.innerHeight)
-  const [widthText, setWidthText] = React.useState('?')
-
-  const myRef = React.useRef(null)
-
-  React.useEffect(() => {
-    const debouncedHandleResize = debounce(function handleResize() {
-      setHeight(window.innerHeight)
-      setWidthText(myRef.current ? myRef.current.offsetWidth : `?`)
-    }, 200)
-
-    window.addEventListener('resize', debouncedHandleResize)
-
-    return (_) => {
-      window.removeEventListener('resize', debouncedHandleResize)
-    }
-  }, [setHeight, setWidthText])
-
-  return (
-    <div ref={myRef} style={{ height, width }}>
-      <BareMinimum2d data={data} container={container} />
-      <div style={{ position: 'fixed', top: 0, fontSize: 10 }}>
-        {height}x{widthText}
-      </div>
-    </div>
-  )
-}
-
-function debounce(fn, ms) {
-  let timer
-  return (_) => {
-    clearTimeout(timer)
-    timer = setTimeout((_) => {
-      timer = null
-      fn.apply(this, arguments)
-    }, ms)
-  }
-}
-
-export { BareMinimum2d, FullHeightPlot }
+export { BareMinimum2d }
