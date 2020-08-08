@@ -1,14 +1,17 @@
 import React from 'react'
-import { BareMinimum2d } from 'bare-minimum-2d'
 import { ResizeObserver } from '@juggle/resize-observer'
+import { BareMinimum2d } from 'bare-minimum-2d'
+import DEMO_PROPS from './demo1props'
 
 /**************************
- * Full Height Plot
+ * DEMO1: FullWindow Plot
  **************************/
 
-class FullHeightPlot extends React.PureComponent {
+class DemoOne extends React.PureComponent {
   resizeObserver = null
   element = React.createRef()
+  width = '100%'
+
   state = {
     height: window.innerHeight
   }
@@ -33,13 +36,21 @@ class FullHeightPlot extends React.PureComponent {
 
   render() {
     const height = this.state.height
-    const { width, data, container } = this.props
-    const containerStyle = { height, width }
-    const divTextStyle = { position: 'fixed', top: 0, fontSize: 10 }
+
+    const containerStyle = { height, width: this.width }
+    const divTextStyle = {
+      position: 'fixed',
+      top: 0,
+      fontSize: 10,
+      color: '#32ff7e'
+    }
 
     return (
       <div ref={this.element} style={containerStyle}>
-        <BareMinimum2d data={data} container={container} />
+        <BareMinimum2d
+          data={DEMO_PROPS.data}
+          container={DEMO_PROPS.container}
+        />
         <div style={divTextStyle}>
           {height}x{this.state.width}
         </div>
@@ -48,4 +59,4 @@ class FullHeightPlot extends React.PureComponent {
   }
 }
 
-export default FullHeightPlot
+export default DemoOne

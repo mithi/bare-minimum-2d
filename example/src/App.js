@@ -1,12 +1,10 @@
 import React from 'react'
-import FullHeightPlot from './Example1'
-import example1Props from './example1Props'
+import DemoOne from './demo1'
 
 const App = () => {
-  const props = example1Props
   return (
     <div>
-      <FullHeightPlot {...props} width='50%' />
+      <DemoOne />
     </div>
   )
 }
