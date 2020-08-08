@@ -1,7 +1,7 @@
 const container = {
   color: '#0000FF',
   opacity: 0.2,
-  xRange: 300,
+  xRange: 500,
   yRange: 300
 }
 
@@ -75,9 +75,39 @@ const square = {
   id: 'sampleSquare'
 }
 
+const ellipse1 = {
+  cx: 0,
+  cy: 55,
+  rx: 8,
+  ry: 20,
+  theta: -135,
+  fillColor: '#00ff00',
+  fillOpacity: 0.3,
+  borderColor: '#00ff00',
+  borderOpacity: 1.0,
+  borderSize: 5,
+  type: 'ellipse',
+  id: 'sampleEllipse'
+}
+
+const ellipse2 = {
+  cx: -20,
+  cy: -50,
+  rx: 10,
+  ry: 10,
+  theta: 45,
+  fillColor: '#ffff00',
+  fillOpacity: 0.3,
+  borderColor: '#ffff00',
+  borderOpacity: 1.0,
+  borderSize: 10,
+  type: 'ellipse',
+  id: 'sampleEllipse2'
+}
+
 const props = {
   container,
-  data: [points1, points2, lines1, lines2, hexagon, square]
+  data: [points1, points2, lines1, lines2, ellipse1, ellipse2, hexagon, square]
 }
 
 export default props
