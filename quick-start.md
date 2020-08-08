@@ -51,11 +51,12 @@ the following
 - "ellipse" (singular)
 
 Polygon elements will be rendered first, so it will be at the bottom layer.
-Then ellipses, lines, points, and finally markers. Elements will be stacked based
-on the order they are declared. So the last element declared of type `markers`
-in the `data` array will be at the most top layer. While the first polygon in the
-`data` array will be rendered at the most bottom layer.
+Then lines, ellipses, and points. Elements will be stacked based
+on the order they are declared. So the last element declared of type `points`
+in the `data` array will be at the most top layer while the first polygon in the
+`data` array will be rendered at the most bottom layer regardless of what is declared first.
 
-Please checkout `example1`, `example2`, and `example3` to learn how to specify
-attributes of each elements. All attributes are required, nothing is optional.
+All attributes are ALWAYS required, nothing is optional.
 The `id` attribute should be unique.
+
+Go back to the readme and checkout the demos and their source codes.
