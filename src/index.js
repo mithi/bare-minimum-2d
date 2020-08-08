@@ -1,14 +1,5 @@
 import React from 'react'
 
-let XRANGE = null
-let YRANGE = null
-
-// canvasX = x  + xRangeMin
-const transformX = (x, xRange) => x + xRange / 2
-
-// canvasY = yRangeMax - y
-const transformY = (y, yRange) => yRange / 2 - y
-
 const svgProps = {
   version: '1.1',
   baseProfile: 'full',
@@ -48,12 +39,12 @@ const PointDefinitions = ({ sets }) => {
   return <defs>{pointDefinitions}</defs>
 }
 
-const createPointInstances = (points) => {
+const createPointInstances = (points, transforms) => {
   return points.x.map((x, i) => {
     return (
       <use
-        x={transformX(x, XRANGE)}
-        y={transformY(points.y[i], YRANGE)}
+        x={transforms.tx(x)}
+        y={transforms.ty(points.y[i])}
         href={`#${points.id}`}
         key={points.id + i}
       />
@@ -61,22 +52,25 @@ const createPointInstances = (points) => {
   })
 }
 
-const Points = ({ sets }) =>
+const Points = ({ sets, transforms }) =>
   sets.reduce(
-    (points, pointSet) => [...points, createPointInstances(pointSet)],
+    (points, pointSet) => [
+      ...points,
+      createPointInstances(pointSet, transforms)
+    ],
     []
   )
 
 /**************************
  * LINES
  **************************/
-const LineSet = ({ size, color, opacity, x0, x1, y0, y1, id }) => {
+const LineSet = ({ size, color, opacity, x0, x1, y0, y1, transforms, id }) => {
   const d = x0.reduce((currentD, rawX0, i) => {
     const [currentX0, currentX1, currentY0, currentY1] = [
-      transformX(rawX0, XRANGE),
-      transformX(x1[i], XRANGE),
-      transformY(y0[i], YRANGE),
-      transformY(y1[i], YRANGE)
+      transforms.tx(rawX0),
+      transforms.tx(x1[i]),
+      transforms.ty(y0[i]),
+      transforms.ty(y1[i])
     ]
     return `${currentD} M ${currentX0},${currentY0} L ${currentX1},${currentY1} `
   }, '')
@@ -86,8 +80,10 @@ const LineSet = ({ size, color, opacity, x0, x1, y0, y1, id }) => {
   )
 }
 
-const Lines = ({ sets }) =>
-  sets.map((lineSet) => <LineSet {...lineSet} key={lineSet.id} />)
+const Lines = ({ sets, transforms }) =>
+  sets.map((lineSet) => (
+    <LineSet {...lineSet} transforms={transforms} key={lineSet.id} />
+  ))
 
 /**************************
  * Polygon
@@ -101,11 +97,12 @@ const Polygon = ({
   borderColor,
   borderOpacity,
   borderSize,
+  transforms,
   id
 }) => {
   const pointString = x.reduce((pointString, rawX, i) => {
-    const currentX = transformX(rawX, XRANGE)
-    const currentY = transformY(y[i], YRANGE)
+    const currentX = transforms.tx(rawX)
+    const currentY = transforms.ty(y[i])
     return `${pointString}${currentX},${currentY} `
   }, '')
 
@@ -121,8 +118,10 @@ const Polygon = ({
     />
   )
 }
-const Polygons = ({ sets }) =>
-  sets.map((polygon) => <Polygon {...polygon} key={polygon.id} />)
+const Polygons = ({ sets, transforms }) =>
+  sets.map((polygon) => (
+    <Polygon {...polygon} transforms={transforms} key={polygon.id} />
+  ))
 
 /**************************
  * Minimal Plot
@@ -131,24 +130,35 @@ const Polygons = ({ sets }) =>
 const filterSet = (data, type) =>
   data.filter((dataSet) => dataSet.type === type)
 
-const BareMinimum2d = ({ container, data }) => {
-  XRANGE = container.xRange
-  YRANGE = container.yRange
-  const view = `0 0 ${container.xRange} ${container.yRange}`
+class BareMinimum2d extends React.PureComponent {
+  container = null
 
-  const pointSets = filterSet(data, 'points')
-  const lineSets = filterSet(data, 'lines')
-  const polygonSets = filterSet(data, 'polygon')
+  transformX = (x) => x + this.container.xRange / 2
+  transformY = (y) => this.container.yRange / 2 - y
 
-  return (
-    <svg {...svgProps} viewBox={view}>
-      <Paper container={container} />
-      <PointDefinitions sets={pointSets} />
-      <Polygons sets={polygonSets} />
-      <Lines sets={lineSets} />
-      <Points sets={pointSets} />
-    </svg>
-  )
+  render() {
+    const { container, data } = this.props
+    this.container = container
+
+    const view = `0 0 ${container.xRange} ${container.yRange}`
+    const pointSets = filterSet(data, 'points')
+    const lineSets = filterSet(data, 'lines')
+    const polygonSets = filterSet(data, 'polygon')
+
+    const transforms = {
+      tx: this.transformX,
+      ty: this.transformY
+    }
+
+    return (
+      <svg {...svgProps} viewBox={view}>
+        <Paper container={container} />
+        <PointDefinitions sets={pointSets} />
+        <Polygons sets={polygonSets} transforms={transforms} />
+        <Lines sets={lineSets} transforms={transforms} />
+        <Points sets={pointSets} transforms={transforms} />
+      </svg>
+    )
+  }
 }
-
 export { BareMinimum2d }
