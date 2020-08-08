@@ -29,13 +29,12 @@ const Paper = ({ container }) => (
 /**************************
  * POINTS
  **************************/
-const PointDefinition = ({ size, color, opacity, id }) => (
-  <circle cx={0} cy={0} r={size} fill={color} opacity={opacity} id={id} />
-)
+
 const PointDefinitions = ({ sets }) => {
-  const pointDefinitions = sets.map((elementSet) => (
-    <PointDefinition {...elementSet} key={elementSet.id} />
-  ))
+  const pointDefinitions = sets.map(({ size, color, opacity, id }) => {
+    const props = { opacity, id, cx: 0, cy: 0, r: size, fill: color }
+    return <circle {...props} key={id} />
+  })
   return <defs>{pointDefinitions}</defs>
 }
 
@@ -75,14 +74,12 @@ const LineSet = ({ size, color, opacity, x0, x1, y0, y1, transforms, id }) => {
     return `${currentD} M ${currentX0},${currentY0} L ${currentX1},${currentY1} `
   }, '')
 
-  return (
-    <path d={d} stroke={color} strokeWidth={size} opacity={opacity} id={id} />
-  )
+  return <path d={d} stroke={color} strokeWidth={size} {...{ opacity, id }} />
 }
 
 const Lines = ({ sets, transforms }) =>
   sets.map((lineSet) => (
-    <LineSet {...lineSet} transforms={transforms} key={lineSet.id} />
+    <LineSet {...lineSet} {...{ transforms }} key={lineSet.id} />
   ))
 
 /**************************
@@ -106,21 +103,20 @@ const Polygon = ({
     return `${pointString}${currentX},${currentY} `
   }, '')
 
-  return (
-    <polygon
-      points={pointString}
-      fill={fillColor}
-      fillOpacity={fillOpacity}
-      stroke={borderColor}
-      strokeWidth={borderSize}
-      strokeOpacity={borderOpacity}
-      id={id}
-    />
-  )
+  const props = {
+    points: pointString,
+    fill: fillColor,
+    stroke: borderColor,
+    strokeWidth: borderSize,
+    strokeOpacity: borderOpacity,
+    id,
+    fillOpacity
+  }
+  return <polygon {...props} />
 }
 const Polygons = ({ sets, transforms }) =>
   sets.map((polygon) => (
-    <Polygon {...polygon} transforms={transforms} key={polygon.id} />
+    <Polygon {...polygon} {...{ transforms }} key={polygon.id} />
   ))
 
 /**************************
@@ -140,7 +136,7 @@ class BareMinimum2d extends React.PureComponent {
     const { container, data } = this.props
     this.container = container
 
-    const view = `0 0 ${container.xRange} ${container.yRange}`
+    const viewBox = `0 0 ${container.xRange} ${container.yRange}`
     const pointSets = filterSet(data, 'points')
     const lineSets = filterSet(data, 'lines')
     const polygonSets = filterSet(data, 'polygon')
@@ -151,12 +147,12 @@ class BareMinimum2d extends React.PureComponent {
     }
 
     return (
-      <svg {...svgProps} viewBox={view}>
-        <Paper container={container} />
+      <svg {...svgProps} {...{ viewBox }}>
+        <Paper {...{ container }} />
         <PointDefinitions sets={pointSets} />
-        <Polygons sets={polygonSets} transforms={transforms} />
-        <Lines sets={lineSets} transforms={transforms} />
-        <Points sets={pointSets} transforms={transforms} />
+        <Polygons sets={polygonSets} {...{ transforms }} />
+        <Lines sets={lineSets} {...{ transforms }} />
+        <Points sets={pointSets} {...{ transforms }} />
       </svg>
     )
   }
