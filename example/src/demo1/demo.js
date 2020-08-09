@@ -8,18 +8,17 @@ import DEMO_PROPS from './demoProps'
 
  This demo shows that the BareMinimum2d component
  takes the dimensions of its parent component
+ and will always scale and be centered.
 
- It also illustrates the data structure of the passed props
- as props to BareMinimum2d and the resulting svg which is
- be pretty expressive
-
- Checkout demoProps.js and demo.svg located at this same directory
-
+ Check out the data structure of the props passed
+ to BareMinimum2d and the resulting svg
+ which are located at this same directory.
+ They're named demoProps.js and demo.svg respectively.
  This component which wraps < BareMinimum2d /> uses ResizeObserver
  to listen for changes in dimensions of its width
  (to display it to the user) when changed, whenever this occurs
  we take this opportunity to get the document window's height
- and sync it to the height of the component.
+ and sync it to the height of this component.
 
  *****/
 const STICKY_DIV_STYLE = {
@@ -32,12 +31,19 @@ const STICKY_DIV_STYLE = {
 
 const DemoSticky = ({ height, width }) => (
   <div style={STICKY_DIV_STYLE}>
-    [Go back]
-    <br />
-    Resize the window.
-    <br />
-    BareMinimum2d takes the dimensions of its parent.
-    <br />
+    Go back. See Props Used. Source code.
+    <p>
+      Resize the window. BareMinimum2d
+      <br />
+      takes the dimensions of its parent
+      <br />
+      and it will always be centered.
+      <br />
+      Use it to draw as many polygons, lines,
+      <br />
+      ellipses and points as you like.
+      <br />
+    </p>
     {height} x {width}
   </div>
 )

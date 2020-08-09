@@ -100,11 +100,11 @@ const hexagon = {
 }
 
 const ellipse1 = {
-  cx: -400,
-  cy: 150,
+  cx: 400,
+  cy: -150,
   rx: 25,
   ry: 45,
-  theta: -45,
+  theta: 45,
   fillColor: COG_COLOR,
   fillOpacity: 0.5,
   borderColor: COG_COLOR,
@@ -115,11 +115,11 @@ const ellipse1 = {
 }
 
 const ellipse2 = {
-  cx: -360,
-  cy: 150,
+  cx: 360,
+  cy: -150,
   rx: 25,
   ry: 45,
-  theta: 45,
+  theta: -45,
   fillColor: COG_COLOR,
   fillOpacity: 0.5,
   borderColor: COG_COLOR,
