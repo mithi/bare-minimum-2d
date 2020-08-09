@@ -9,6 +9,16 @@ import {
   STICKY_DIV_STYLE
 } from './utils'
 
+/*****
+ DEMO #3
+
+ This demo shows that the BareMinimum2d component
+ can be used for interactive applications
+
+ The pinwheel's orientation, size and colors
+ changes everytime you move your cursor
+ *****/
+
 const CONTAINER = {
   color: pickRandom(NINETEEN_COLORS),
   opacity: 1.0,
@@ -21,8 +31,11 @@ const R = 200
 class PinWheelShapesManager {
   oldPointColor = NINETEEN_COLORS[1]
   oldPointSize = THREE_SIZES[1]
+  oldPoint2Color = NINETEEN_COLORS[0]
+  oldPoint2Size = THREE_SIZES[0]
   oldPlusColor = NINETEEN_COLORS[2]
-  oldPlusSize = THREE_SIZES[1]
+  oldPlusSize = THREE_SIZES[2]
+
   L1 = { x0: -R, y0: 0, x1: R, y1: 0 }
   L2 = { x0: 0, y0: -R, x1: 0, y1: R }
 
@@ -48,20 +61,36 @@ class PinWheelShapesManager {
       opacity: 1.0,
       size: skewedRandom(THREE_SIZES, this.oldPointSize),
       type: 'points',
-      id: 'heads'
+      id: 'points-1'
     }
+
+    const points2 = {
+      x: [line1.x0, line1.x1, line2.x0, line2.x1],
+      y: [line1.y0, line1.y1, line2.y0, line2.y1],
+      color: skewedRandom(NINETEEN_COLORS, this.oldPoint2Color),
+      opacity: 1.0,
+      size: skewedRandom(THREE_SIZES, this.oldPoint2Size),
+      type: 'points',
+      id: 'points-2'
+    }
+
     this.oldPointColor = points.color
     this.oldPointSize = points.size
+    this.oldPoint2Color = points2.color
+    this.oldPoint2Size = points2.size
+
     this.oldPlusColor = lines.color
     this.oldPlusSize = points.size
 
-    return [points, lines]
+    return [points, points2, lines]
   }
 }
 
 const DemoSticky = ({ x, y, theta }) => (
   <div style={STICKY_DIV_STYLE}>
-    [Go back]
+    Go back. Source code.
+    <br />
+    BareMinimum2d is fast enough for interactive applications
     <br />
     Move your cursor to spin the pinwheel
     <br />
