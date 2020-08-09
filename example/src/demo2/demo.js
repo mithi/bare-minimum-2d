@@ -6,8 +6,11 @@ import * as p from './params'
  This demo shows that BareMinimum2d can be used
  for on-the-fly animations.
 
+ Lines are updated every 15 milliseconds generating an interesting pattern
+
  demo.svg in this directory is is a snapshot of
  of one of the animation frames generated
+
  *****/
 
 const DemoSticky = ({ t }) => (

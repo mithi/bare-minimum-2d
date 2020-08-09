@@ -6,6 +6,8 @@ import DEMO_PROPS from './demoProps'
 /*****
  DEMO #1
 
+ In this demo, simple points, lines, ellipses and polygons are drawn.
+
  This demo shows that the BareMinimum2d component
  takes the dimensions of its parent component
  and will always scale and be centered.
@@ -14,6 +16,7 @@ import DEMO_PROPS from './demoProps'
  to BareMinimum2d and the resulting svg
  which are located at this same directory.
  They're named demoProps.js and demo.svg respectively.
+
  This component which wraps < BareMinimum2d /> uses ResizeObserver
  to listen for changes in dimensions of its width
  (to display it to the user) when changed, whenever this occurs
@@ -34,7 +37,7 @@ const DemoSticky = ({ height, width }) => (
       its parent and it will always be centered.
       <br />
       <br />
-      Use it to draw as many polygons,
+      Use BareMinimum2d to specify as many polygons,
       <br />
       lines, ellipses and points as you like.
       <br />

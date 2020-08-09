@@ -1,6 +1,6 @@
 # Bare Minimum 2D Plotter (WIP)
 
-> A low-level and lightweight react component to render points, lines, ellipses and polygons on svgs
+> A low-level and lightweight react component to declare and render points, lines, ellipses and polygons
 
 [![NPM](https://img.shields.io/npm/v/bare-minimum-2d.svg)](https://www.npmjs.com/package/bare-minimum-2d)
 
@@ -26,8 +26,10 @@ npm install --save bare-minimum-2d
 
 ## Usage
 
-- Read this [two minute introduction](./quick-start.md)
-- Check this example props.
+- Read this BareMinimum2d [Core concepts on two minutes](./core-concepts.md)
+- These is an example of [props](./example/src/demo1/demoProps.js) you
+  can pass to a `BareMinimum2d` component.
+- You pass it like so:
 
 ```jsx
 <div style={{ width: 500, height: 600 }}>
@@ -35,21 +37,12 @@ npm install --save bare-minimum-2d
 </div>
 ```
 
-### Demo 1 Static and Responsive (WIP)
+## Demo Applications
 
-Here is a plot where simple points, lines, ellipses and polygons are drawn.
-Here are the props passed to result this page and `<BareMinimum2d />` is wrapped by this component which takes full window.
-
-### Demo 2 Animation (WIP)
-
-In this example, lines are generated every `100` milliseconds generating an interesting pattern. Here's is the component wrapper.
-https://p5js.org/examples/math-parametric-equations.html
-
-### Demo 3 Interactive (WIP)
-
-In this example, the circles move depending on where your cursor is located.
-Here's the component wrapper.
-https://p5js.org/examples/math-arctangent.html
+| Responsive Illustrations                                                                                                              | Generate On-the-fly Animations                                                                                                    | Interactive Applications                                                                                                          |
+| ------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| <a href="https://mithi.github.io/bare-minimum-2d/demo1"><img src="./example/src/demo1/demo.svg" height="300px" width="270px"></a>     | <a href="https://mithi.github.io/bare-minimum-2d/demo2"><img src="./example/src/demo2/demo.svg" height="300px" width="270px"></a> | <a href="https://mithi.github.io/bare-minimum-2d/demo3"><img src="./example/src/demo3/demo.svg" height="300px" width="270px"></a> |
+| In this demo, the plot is always centered no matter how you resize the window, the figure takes the dimension of its parent container | In this demo, 100 lines are generated every 15 milliseconds resulting a smooth screen saver effect                                | In this demo, the pinwheel's orientation, size, and colors changes everytime you move your cursor                                 |
 
 ## License
 

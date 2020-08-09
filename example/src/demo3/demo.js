@@ -8,22 +8,6 @@ import {
   THREE_SIZES
 } from './utils'
 
-const DemoSticky = ({ x, y, theta }) => (
-  <div style={{ position: 'fixed', color: '#000000' }} className='sticky-div'>
-    Source code.
-    <br />
-    BareMinimum2d is fast enough for interactive applications
-    <br />
-    Move your cursor to spin the pinwheel
-    <br />
-    x: {x}
-    <br />
-    y: {y}
-    <br /> a:{((theta * 180) / Math.PI).toFixed(2)}
-    <br />
-  </div>
-)
-
 /*****
  DEMO #3
 
@@ -36,6 +20,22 @@ const DemoSticky = ({ x, y, theta }) => (
  A snapshot of an svg given a possible combination is
  also saved in this directory 'demo.svg'
  *****/
+
+const DemoSticky = ({ x, y, theta }) => (
+  <div style={{ position: 'fixed', color: '#000000' }} className='sticky-div'>
+    Source code.
+    <br />
+    Move your cursor to spin the pinwheel
+    <br />
+    BareMinimum2d can be used for interactive applications
+    <br />
+    x: {x}
+    <br />
+    y: {y}
+    <br /> a:{((theta * 180) / Math.PI).toFixed(2)}
+    <br />
+  </div>
+)
 
 const CONTAINER = {
   color: pickRandom(NINETEEN_COLORS),
