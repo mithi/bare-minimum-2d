@@ -1,7 +1,7 @@
 import React from 'react'
 import { ResizeObserver } from '@juggle/resize-observer'
 import { BareMinimum2d } from 'bare-minimum-2d'
-import DEMO_PROPS from './demo1props'
+import DEMO_PROPS from './demoProps'
 
 const STICKY_DIV_STYLE = {
   position: 'fixed',
