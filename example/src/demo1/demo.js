@@ -2,6 +2,7 @@ import React from 'react'
 import { ResizeObserver } from '@juggle/resize-observer'
 import { BareMinimum2d } from 'bare-minimum-2d'
 import DEMO_PROPS from './demoProps'
+import { URL_SOURCE_CODE_DEMO1, URL_SOURCE_PROPS_DEMO1 } from '../links'
 
 /*****
  DEMO #1
@@ -27,21 +28,23 @@ import DEMO_PROPS from './demoProps'
 
 const DemoSticky = ({ height, width }) => (
   <div style={{ position: 'fixed', color: '#32ff7e' }} className='sticky-div'>
-    Source code: Props + Component .
-    <p>
-      Resize the window. {height} x {width}
-      <br />
-      <br />
-      BareMinimum2d takes the dimensions of
-      <br />
-      its parent and it will always be centered.
-      <br />
-      <br />
-      Use BareMinimum2d to specify as many polygons,
-      <br />
-      lines, ellipses and points as you like.
-      <br />
-    </p>
+    <a href={URL_SOURCE_CODE_DEMO1}>Source code</a>
+    <br />
+    <a href={URL_SOURCE_PROPS_DEMO1}>Props</a>
+    <br />
+    <br />
+    Resize the window. {height} x {width}
+    <br />
+    <br />
+    BareMinimum2d takes the dimensions of
+    <br />
+    its parent and it will always be centered.
+    <br />
+    <br />
+    Use BareMinimum2d to specify as many polygons,
+    <br />
+    lines, ellipses and points as you like.
+    <br />
   </div>
 )
 

@@ -1,10 +1,13 @@
 import React from 'react'
 import { BareMinimum2d } from 'bare-minimum-2d'
+import { URL_SOURCE_CODE_DEMO3 } from '../links'
+
 import {
   pickRandom,
   skewedRandom,
   rotatedLine,
   NINETEEN_COLORS,
+  SIX_COLORS,
   THREE_SIZES
 } from './utils'
 
@@ -23,7 +26,8 @@ import {
 
 const DemoSticky = ({ x, y, theta }) => (
   <div style={{ position: 'fixed', color: '#000000' }} className='sticky-div'>
-    Source code.
+    <a href={URL_SOURCE_CODE_DEMO3}>Source code</a>
+    <br />
     <br />
     Move your cursor to spin the pinwheel
     <br />
@@ -38,7 +42,7 @@ const DemoSticky = ({ x, y, theta }) => (
 )
 
 const CONTAINER = {
-  color: pickRandom(NINETEEN_COLORS),
+  color: '#b71540',
   opacity: 1.0,
   xRange: 1000,
   yRange: 1000
@@ -54,12 +58,20 @@ class PinWheelShapesManager {
   savedSizes = Array.apply(null, Array(numberOfColors)).map((_) =>
     pickRandom(THREE_SIZES)
   )
+
+  savedColorsPolygon = Array.apply(null, Array(2)).map((_) =>
+    pickRandom(SIX_COLORS)
+  )
   L1 = { x0: -R, y0: 0, x1: R, y1: 0 }
   L2 = { x0: 0, y0: -R, x1: 0, y1: R }
 
   update(theta) {
     const newColors = this.savedColors.map((color) =>
       skewedRandom(NINETEEN_COLORS, color)
+    )
+
+    const newColorsPolygon = this.savedColorsPolygon.map((color) =>
+      skewedRandom(SIX_COLORS, color)
     )
     const newSizes = this.savedSizes.map((size) =>
       skewedRandom(THREE_SIZES, size)
@@ -73,11 +85,11 @@ class PinWheelShapesManager {
     const polygon = {
       x: [line3.x0, line4.x0, line3.x1],
       y: [line3.y0, line4.y0, line4.y1],
-      fillColor: newColors[2],
+      fillColor: newColorsPolygon[1],
       fillOpacity: 1,
-      borderColor: newColors[1],
+      borderColor: newColorsPolygon[0],
       borderOpacity: 1.0,
-      borderSize: newSizes[1],
+      borderSize: newSizes[11],
       type: 'polygon',
       id: 'body'
     }
@@ -87,9 +99,9 @@ class PinWheelShapesManager {
       y0: [line1.y0, line2.y0],
       x1: [line1.x1, line2.x1],
       y1: [line1.y1, line2.y1],
-      color: newColors[0],
+      color: newColors[10],
       opacity: 1.0,
-      size: newSizes[0],
+      size: newSizes[10],
       type: 'lines',
       id: 'two-lines-center-cross'
     }
@@ -103,14 +115,15 @@ class PinWheelShapesManager {
       x: [pointX],
       y: [pointsY[i]],
       opacity: 1.0,
-      size: newSizes[i + 3],
-      color: newColors[i + 3],
+      size: newSizes[i],
+      color: newColors[i],
       type: 'points',
       id: 'points' + i
     }))
 
     this.savedColors = newColors
     this.savedSizes = newSizes
+    this.savedColorsPolygon = newColorsPolygon
 
     return [...newPoints, lines, polygon]
   }
@@ -118,11 +131,11 @@ class PinWheelShapesManager {
 class Demo extends React.Component {
   h = window.innerHeight
   theta = 0
-  data = []
   pinWheel = new PinWheelShapesManager()
   state = {
     x: 0,
-    y: 0
+    y: 0,
+    data: []
   }
 
   _onMouseMove(e) {
@@ -136,17 +149,17 @@ class Demo extends React.Component {
     const theta = Math.atan2(currentY, currentX)
 
     this.h = h
-    this.data = this.pinWheel.update(theta)
+    const data = this.pinWheel.update(theta)
 
     this.setState({
       x: currentX,
       y: currentY,
-      theta
+      data
     })
   }
 
   render() {
-    const { x, y, theta } = this.state
+    const { x, y, data } = this.state
     const divDimensionsStyle = { width: '100%', height: this.h }
 
     return (
@@ -154,8 +167,8 @@ class Demo extends React.Component {
         style={divDimensionsStyle}
         onMouseMove={this._onMouseMove.bind(this)}
       >
-        <BareMinimum2d container={CONTAINER} data={this.data} />
-        <DemoSticky {...{ x, y, theta }} />
+        <BareMinimum2d {...{ data, container: CONTAINER }} />
+        <DemoSticky {...{ x, y, theta: this.theta }} />
       </div>
     )
   }

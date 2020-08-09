@@ -1,7 +1,4 @@
 import React from 'react'
-import Demo3 from './demo3/demo'
-import Demo2 from './demo2/demo'
-import Demo1 from './demo1/demo'
 import {
   BrowserRouter as Router,
   Switch,
@@ -9,6 +6,11 @@ import {
   Link,
   Redirect
 } from 'react-router-dom'
+
+import Demo3 from './demo3/demo'
+import Demo2 from './demo2/demo'
+import Demo1 from './demo1/demo'
+import { URL_REPO } from './links'
 
 const stickyHome = {
   position: 'fixed',
@@ -25,6 +27,7 @@ const LandingPage = () => (
     <br />
     <Link to='/demo3'>Demo3</Link>
     <br />
+    <a href={URL_REPO}>Fork me on Github</a>
   </div>
 )
 

@@ -1,6 +1,8 @@
 import React from 'react'
 import { BareMinimum2d } from 'bare-minimum-2d'
 import * as p from './params'
+import { URL_SOURCE_CODE_DEMO2 } from '../links'
+
 /*****
  DEMO #2
  This demo shows that BareMinimum2d can be used
@@ -15,7 +17,8 @@ import * as p from './params'
 
 const DemoSticky = ({ t }) => (
   <div style={{ position: 'fixed', color: '#ffffff' }} className='sticky-div'>
-    Source code.
+    <a href={URL_SOURCE_CODE_DEMO2}>Source code</a>
+    <br />
     <br />
     BareMinimum2d can be used for on-the-fly animations
     <br />
