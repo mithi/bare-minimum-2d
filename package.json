@@ -1,6 +1,6 @@
 {
   "name": "bare-minimum-2d",
-  "version": "2.0.0",
+  "version": "0.1.0",
   "description": "A lightweight react component that renders points, lines, and polygons on an svg",
   "author": "mithi",
   "license": "MIT",
