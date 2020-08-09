@@ -1,4 +1,4 @@
-# Core concepts in two minutes
+# Core Concepts in Two Minutes
 
 A `BareMinimum2d` component only has two props: `container` and `data`.
 `container` is a small hash-like type object with exactly four elements.

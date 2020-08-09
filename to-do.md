@@ -1,10 +1,9 @@
-# Future features
+# To-Do
 
 ## Markers
 
 - Add an element type called "markers"
-  If an element is of type `markers`, don't forget to specify a`markerType`
-  like the following:
+  If an element is of type `markers`, you should specify a`markerType` like
 
 - "plus"
 - "plus-circle"
@@ -14,7 +13,7 @@
 - "arrow-up-circle"
 - "arrow-up"
 
-Which can be declared as:
+To use, you can pass it to the data array like so:
 
 ```js
 const markers1 = {
