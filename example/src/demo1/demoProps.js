@@ -1,10 +1,10 @@
-const BODY_COLOR = '#FC427B'
+const BODY_COLOR = '#e84393'
 const COG_COLOR = '#32ff7e'
-const LEG_COLOR = '#EE5A24'
+const LEG_COLOR = '#FF5722'
 const PAPER_BG_COLOR = '#17212B'
 const GROUND_COLOR = '#0e2845'
-const POINT_SIZE = 25
-const LINE_SIZE = 20
+const POINT_SIZE = 30
+const LINE_SIZE = 25
 
 const container = {
   color: PAPER_BG_COLOR,
@@ -69,7 +69,7 @@ const legs = {
   x1: [-269, -355, -269, 269, 335, 269],
   y1: [224, 0, -224, -224, 0, 224],
   color: LEG_COLOR,
-  opacity: 0.7,
+  opacity: 0.8,
   size: LINE_SIZE,
   type: 'lines',
   id: 'six-legs'
