@@ -18,25 +18,37 @@ const NINETEEN_COLORS = [
   '#673AB7',
   '#3F51B5',
   '#2196F3',
-  '#03A9F4',
   '#00BCD4',
   '#009688',
   '#4CAF50',
-  '#8BC34A',
-  '#CDDC39',
-  '#00BCD4',
-  '#009688',
-  '#4CAF50',
-  '#8BC34A',
-  '#CDDC39',
+  '#12CBC4',
+  '#9980FA',
   '#FFEB3B',
   '#FFC107',
   '#FF9800',
   '#FF5722',
-  '#795548',
-  '#9E9E9E',
-  '#607D8B'
+  '#A3CB38',
+  '#B53471',
+  '#D980FA',
+  '#1289A7',
+  '#32ff7e'
+]
+
+const SIX_COLORS = [
+  '#4b4b4b',
+  '#e317d5',
+  '#0652DD',
+  '#006266',
+  '#EA2027',
+  '#132914'
 ]
 
 const THREE_SIZES = [40, 60, 95]
-export { pickRandom, skewedRandom, rotatedLine, NINETEEN_COLORS, THREE_SIZES }
+export {
+  pickRandom,
+  skewedRandom,
+  rotatedLine,
+  NINETEEN_COLORS,
+  THREE_SIZES,
+  SIX_COLORS
+}
