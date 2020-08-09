@@ -39,13 +39,17 @@ npm install --save bare-minimum-2d
 
 ## Demo Applications
 
-| Responsive Illustrations                                                                                                              | Generate On-the-fly Animations                                                                                                    | Interactive Applications                                                                                                          |
-| ------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| <a href="https://mithi.github.io/bare-minimum-2d/demo1"><img src="./example/src/demo1/demo.svg" height="300px" width="270px"></a>     | <a href="https://mithi.github.io/bare-minimum-2d/demo2"><img src="./example/src/demo2/demo.svg" height="300px" width="270px"></a> | <a href="https://mithi.github.io/bare-minimum-2d/demo3"><img src="./example/src/demo3/demo.svg" height="300px" width="270px"></a> |
-| In this demo, the plot is always centered no matter how you resize the window, the figure takes the dimension of its parent container | In this demo, 100 lines are generated every 15 milliseconds resulting a smooth screen saver effect                                | In this demo, the pinwheel's orientation, size, and colors changes everytime you move your cursor                                 |
+| Responsive Illustrations                                                                                                          | Generate On-the-fly Animations                                                                                                    | Interactive Applications                                                                                                          |
+| --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| <a href="https://mithi.github.io/bare-minimum-2d/demo1"><img src="./example/src/demo1/demo.svg" height="300px" width="270px"></a> | <a href="https://mithi.github.io/bare-minimum-2d/demo2"><img src="./example/src/demo2/demo.svg" height="300px" width="270px"></a> | <a href="https://mithi.github.io/bare-minimum-2d/demo3"><img src="./example/src/demo3/demo.svg" height="300px" width="270px"></a> |
+| [demo][demo_link1]                                                                                                                | [demo][demo_link2]                                                                                                                | [demo][demo_link3]                                                                                                                |
 
-## License
+[demo_link1]: https://mithi.github.io/bare-minimum-2d/demo1
+[demo_link2]: https://mithi.github.io/bare-minimum-2d/demo2
+[demo_link3]: https://mithi.github.io/bare-minimum-2d/demo3
 
 Checkout [future feature ideas](./future-features-ideas.md) if you're interested
+
+## License
 
 MIT © [Mithi](https://github.com/mithi)
