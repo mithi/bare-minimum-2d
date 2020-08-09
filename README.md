@@ -26,8 +26,8 @@ npm install --save bare-minimum-2d
 
 ## Usage
 
-- Read this BareMinimum2d [Core concepts on two minutes](./core-concepts.md)
-- These is an example of [props](./example/src/demo1/demoProps.js) you
+- Read this: [Core Concepts on Two Minutes](./core-concepts.md)
+- This is [an example](./example/src/demo1/demoProps.js) of what you can
   can pass to a `BareMinimum2d` component.
 - You pass it like so:
 
@@ -48,7 +48,7 @@ npm install --save bare-minimum-2d
 [demo_link2]: https://mithi.github.io/bare-minimum-2d/demo2
 [demo_link3]: https://mithi.github.io/bare-minimum-2d/demo3
 
-Checkout [future feature ideas](./future-features-ideas.md) if you're interested
+Checkout [features](./to-do.md) that might be implemented in the future.
 
 ## License
 
