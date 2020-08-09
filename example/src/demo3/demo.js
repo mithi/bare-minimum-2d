@@ -17,6 +17,9 @@ import {
 
  The pinwheel's orientation, size and colors
  changes everytime you move your cursor
+
+ A snapshot of an svg given a possible combination is
+ also saved in this directory 'demo.svg'
  *****/
 
 const CONTAINER = {
