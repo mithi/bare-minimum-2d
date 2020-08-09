@@ -11,12 +11,10 @@ import * as p from './params'
  *****/
 
 const DemoSticky = ({ t }) => (
-  <div style={p.STICKY_DIV_STYLE}>
-    Go back. Source code.
+  <div style={{ position: 'fixed', color: '#ffffff' }} className='sticky-div'>
+    Source code.
     <br />
-    BareMinimum2d
-    <br />
-    can be used for on-the-fly animations
+    BareMinimum2d can be used for on-the-fly animations
     <br />
     {t}
   </div>

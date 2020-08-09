@@ -21,30 +21,24 @@ import DEMO_PROPS from './demoProps'
  and sync it to the height of this component.
 
  *****/
-const STICKY_DIV_STYLE = {
-  position: 'fixed',
-  top: 0,
-  fontSize: 10,
-  color: '#32ff7e',
-  paddingLeft: '5px'
-}
 
 const DemoSticky = ({ height, width }) => (
-  <div style={STICKY_DIV_STYLE}>
-    Go back. See Props Used. Source code.
+  <div style={{ position: 'fixed', color: '#32ff7e' }} className='sticky-div'>
+    Source code: Props + Component .
     <p>
-      Resize the window. BareMinimum2d
+      Resize the window. {height} x {width}
       <br />
-      takes the dimensions of its parent
       <br />
-      and it will always be centered.
+      BareMinimum2d takes the dimensions of
       <br />
-      Use it to draw as many polygons, lines,
+      its parent and it will always be centered.
       <br />
-      ellipses and points as you like.
+      <br />
+      Use it to draw as many polygons,
+      <br />
+      lines, ellipses and points as you like.
       <br />
     </p>
-    {height} x {width}
   </div>
 )
 

@@ -6,9 +6,34 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-weight: bolder;
+  background-color: #30336b;
+  font-size: 10px;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+a {
+  color: #dff9fb;
+}
+
+a:hover {
+  color: #ff7979;
+}
+
+.sticky-div {
+  position: 'fixed';
+  top: 20px;
+  margin: 5px;
+  padding: 5px;
+}
+
+#sticky-home {
+  position: fixed;
+  top: 0;
+  color: #32ff7e;
+  background-color: rgba(0, 0, 0, 0);
 }

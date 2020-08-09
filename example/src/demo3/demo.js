@@ -5,9 +5,24 @@ import {
   skewedRandom,
   rotatedLine,
   NINETEEN_COLORS,
-  THREE_SIZES,
-  STICKY_DIV_STYLE
+  THREE_SIZES
 } from './utils'
+
+const DemoSticky = ({ x, y, theta }) => (
+  <div style={{ position: 'fixed', color: '#000000' }} className='sticky-div'>
+    Source code.
+    <br />
+    BareMinimum2d is fast enough for interactive applications
+    <br />
+    Move your cursor to spin the pinwheel
+    <br />
+    x: {x}
+    <br />
+    y: {y}
+    <br /> a:{((theta * 180) / Math.PI).toFixed(2)}
+    <br />
+  </div>
+)
 
 /*****
  DEMO #3
@@ -100,24 +115,6 @@ class PinWheelShapesManager {
     return [...newPoints, lines, polygon]
   }
 }
-
-const DemoSticky = ({ x, y, theta }) => (
-  <div style={STICKY_DIV_STYLE}>
-    Go back. Source code.
-    <br />
-    BareMinimum2d is fast enough for interactive applications
-    <br />
-    Move your cursor to spin the pinwheel
-    <br />
-    x:{x}
-    <br />
-    y: {y}
-    <br />
-    a:{((theta * 180) / Math.PI).toFixed(2)}
-    <br />
-  </div>
-)
-
 class Demo extends React.Component {
   h = window.innerHeight
   theta = 0

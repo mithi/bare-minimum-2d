@@ -38,20 +38,5 @@ const NINETEEN_COLORS = [
   '#607D8B'
 ]
 
-const STICKY_DIV_STYLE = {
-  position: 'fixed',
-  top: 0,
-  margin: '10px',
-  fontSize: 10,
-  color: pickRandom(NINETEEN_COLORS)
-}
-
 const THREE_SIZES = [40, 60, 95]
-export {
-  pickRandom,
-  skewedRandom,
-  rotatedLine,
-  NINETEEN_COLORS,
-  THREE_SIZES,
-  STICKY_DIV_STYLE
-}
+export { pickRandom, skewedRandom, rotatedLine, NINETEEN_COLORS, THREE_SIZES }

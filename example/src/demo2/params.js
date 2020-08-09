@@ -17,10 +17,3 @@ export const CONTAINER = {
   xRange: X_RANGE,
   yRange: Y_RANGE
 }
-
-export const STICKY_DIV_STYLE = {
-  position: 'fixed',
-  top: 0,
-  fontSize: 10,
-  color: LINE_COLOR
-}
