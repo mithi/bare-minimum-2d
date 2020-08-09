@@ -1,6 +1,6 @@
-# Quick Start
+# Core concepts in two minutes
 
-A `BareMinimum2d` component only has two props `container` and `data`.
+A `BareMinimum2d` component only has two props: `container` and `data`.
 `container` is a small hash-like type object with exactly four elements.
 `data` is an array containing hash-like objects.
 
@@ -21,10 +21,7 @@ Example:
 
 ```
 
-`container.color` and `container.opacity` are "paper" background properties
-of `BareMinimum2d`.
-
-The `BareMinimum2d`'s size is the size of its parent container (responsive).
+`container.color` and `container.opacity` are specifies the canvas color of `BareMinimum2d`.
 
 The cartesian coordinate system of `BareMinimum` will follow the
 diagram below given `container.xRange` and `container.yRange`.
@@ -41,6 +38,8 @@ See diagram below.
                    -yRange/2
 ```
 
+Here's an [Example data prop](./example/src/demo1/demoProps.js).
+
 Each element of the array `data` should be a hash-like object
 with a `type` key which should have a value that is one of
 the following
@@ -51,12 +50,14 @@ the following
 - "ellipse" (singular)
 
 Polygon elements will be rendered first, so it will be at the bottom layer.
-Then lines, ellipses, and points. Elements will be stacked based
-on the order they are declared. So the last element declared of type `points`
+Then lines, ellipses, and points. For each type of element, those elements will be stacked based
+on the order they are declared. This means that the last element declared of type `points`
 in the `data` array will be at the most top layer while the first polygon in the
 `data` array will be rendered at the most bottom layer regardless of what is declared first.
 
 All attributes are ALWAYS required, nothing is optional.
 The `id` attribute should be unique.
 
-Go back to the readme and checkout the demos and their source codes.
+Again, here's an [Example data prop](./example/src/demo1/demoProps.js), in case you missed it,
+
+Go checkout the demos and source codes.
