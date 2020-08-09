@@ -1,8 +1,28 @@
 import React from 'react'
 import { BareMinimum2d } from 'bare-minimum-2d'
 import * as p from './params'
+/*****
+ DEMO #2
+ This demo shows that BareMinimum2d can be used
+ for on-the-fly animations.
 
-class DemoTwo extends React.PureComponent {
+ demo.svg in this directory is is a snapshot of
+ of one of the animation frames generated
+ *****/
+
+const DemoSticky = ({ t }) => (
+  <div style={p.STICKY_DIV_STYLE}>
+    Go back. Source code.
+    <br />
+    BareMinimum2d
+    <br />
+    can be used for on-the-fly animations
+    <br />
+    {t}
+  </div>
+)
+
+class Demo extends React.PureComponent {
   intervalID = null
   t = Math.floor(Math.random() * p.RANDOMNESS)
   state = {
@@ -28,7 +48,7 @@ class DemoTwo extends React.PureComponent {
     return (
       <div style={{ width: '100%', height: p.IMAGE_SIZE }}>
         <BareMinimum2d container={p.CONTAINER} data={this.state.data} />
-        <div style={p.STICKY_DIV_STYLE}>{this.t}</div>
+        <DemoSticky t={this.t} />
       </div>
     )
   }
@@ -69,4 +89,4 @@ const fx1 = (t) =>
 const fy1 = (t) =>
   Math.cos(t / 15) * 125 + Math.cos(t / 25) * 125 + Math.cos(t / 35) * 125
 
-export default DemoTwo
+export default Demo
