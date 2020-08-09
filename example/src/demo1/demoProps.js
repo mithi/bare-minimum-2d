@@ -91,7 +91,7 @@ const hexagon = {
   x: [-228, -230, -99, 229, 230, 99],
   y: [107, -91, -236, -107, 91, 236],
   fillColor: GROUND_COLOR,
-  fillOpacity: 0.5,
+  fillOpacity: 1.0,
   borderColor: GROUND_COLOR,
   borderOpacity: 0,
   borderSize: 0,
@@ -138,8 +138,8 @@ const props = {
     headPoint,
     vertices,
     legs,
-    body,
     hexagon,
+    body,
     ellipse1,
     ellipse2
   ]
