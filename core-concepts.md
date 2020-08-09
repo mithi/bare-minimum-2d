@@ -38,7 +38,7 @@ See diagram below.
                    -yRange/2
 ```
 
-Here's an [Example data prop](./example/src/demo1/demoProps.js).
+Here's an [example data prop](./example/src/demo1/demoProps.js).
 
 Each element of the array `data` should be a hash-like object
 with a `type` key which should have a value that is one of
@@ -58,6 +58,6 @@ in the `data` array will be at the most top layer while the first polygon in the
 All attributes are ALWAYS required, nothing is optional.
 The `id` attribute should be unique.
 
-Again, here's an [Example data prop](./example/src/demo1/demoProps.js), in case you missed it,
+Again, here's an [example data prop](./example/src/demo1/demoProps.js), in case you missed it,
 
 Go checkout the demos and source codes.
