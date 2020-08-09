@@ -16,7 +16,7 @@ import { URL_SOURCE_CODE_DEMO2 } from '../links'
  *****/
 
 const DemoSticky = ({ t }) => (
-  <div style={{ position: 'fixed', color: '#ffffff' }} className='sticky-div'>
+  <div style={{ position: 'fixed' }} className='sticky-div'>
     <p>
       BareMinimum2d can be used for on-the-fly animations
       <br />

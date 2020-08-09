@@ -25,7 +25,7 @@ import {
  *****/
 
 const DemoSticky = ({ x, y, theta }) => (
-  <div style={{ position: 'fixed', color: '#000000' }} className='sticky-div'>
+  <div style={{ position: 'fixed' }} className='sticky-div'>
     <p>
       Move your cursor to spin the pinwheel.
       <br />

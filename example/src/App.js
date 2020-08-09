@@ -30,7 +30,7 @@ const LandingPage = () => (
     <a href={URL_REPO} target='_blank' rel='noopener noreferrer'>
       Code Repository.
     </a>
-    <h1>{'<BareMinimum2d />'}</h1>
+    <h1>A BareMinimum2d Plotter</h1>
     <p>
       BareMinimum2d is a low-level and lightweight React component you can use
       <br />
@@ -38,8 +38,7 @@ const LandingPage = () => (
       <br />
     </p>
     <p>
-      Go check out the three demos lined above and if you're interested in using
-      it,
+      Go check out the three demos linked above. If you're interested in it,
       <br />
       you can checkout the repository (also linked above).
     </p>

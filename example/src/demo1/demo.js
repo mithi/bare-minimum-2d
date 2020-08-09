@@ -27,7 +27,7 @@ import { URL_SOURCE_CODE_DEMO1, URL_SOURCE_PROPS_DEMO1 } from '../links'
  *****/
 
 const DemoSticky = ({ height, width }) => (
-  <div style={{ position: 'fixed', color: '#32ff7e' }} className='sticky-div'>
+  <div style={{ position: 'fixed' }} className='sticky-div'>
     <p>
       Resize the window.
       <br />
