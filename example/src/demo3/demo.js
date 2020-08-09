@@ -26,18 +26,23 @@ import {
 
 const DemoSticky = ({ x, y, theta }) => (
   <div style={{ position: 'fixed', color: '#000000' }} className='sticky-div'>
-    <a href={URL_SOURCE_CODE_DEMO3}>Source code</a>
-    <br />
-    <br />
-    Move your cursor to spin the pinwheel
-    <br />
-    BareMinimum2d can be used for interactive applications
-    <br />
-    x: {x}
-    <br />
-    y: {y}
-    <br /> a:{((theta * 180) / Math.PI).toFixed(2)}
-    <br />
+    <p>
+      Move your cursor to spin the pinwheel.
+      <br />
+      BareMinimum2d can be used for interactive applications.
+      <br />
+    </p>
+    <p>
+      x: {x}
+      <br />
+      y: {y}
+      <br /> theta:{((theta * 180) / Math.PI).toFixed(2)}
+    </p>
+    <p>
+      <a href={URL_SOURCE_CODE_DEMO3} target='_blank' rel='noopener noreferrer'>
+        Source code
+      </a>
+    </p>
   </div>
 )
 
@@ -158,6 +163,9 @@ class Demo extends React.Component {
     })
   }
 
+  componentDidMount() {
+    this.setState({ data: this.pinWheel.update(0) })
+  }
   render() {
     const { x, y, data } = this.state
     const divDimensionsStyle = { width: '100%', height: this.h }
