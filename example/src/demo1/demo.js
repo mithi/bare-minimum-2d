@@ -28,23 +28,30 @@ import { URL_SOURCE_CODE_DEMO1, URL_SOURCE_PROPS_DEMO1 } from '../links'
 
 const DemoSticky = ({ height, width }) => (
   <div style={{ position: 'fixed', color: '#32ff7e' }} className='sticky-div'>
-    <a href={URL_SOURCE_CODE_DEMO1}>Source code</a>
+    <p>
+      Resize the window.
+      <br />
+      {height} x {width}
+      <br />
+    </p>
+    <p>
+      BareMinimum2d takes the dimensions of
+      <br />
+      its parent and it will always be centered.
+      <br />
+    </p>
+    <p>
+      Use BareMinimum2d to specify as many polygons,
+      <br />
+      lines, ellipses and points as you like.
+    </p>
+    <a href={URL_SOURCE_CODE_DEMO1} target='_blank' rel='noopener noreferrer'>
+      Source code
+    </a>
     <br />
-    <a href={URL_SOURCE_PROPS_DEMO1}>Props</a>
-    <br />
-    <br />
-    Resize the window. {height} x {width}
-    <br />
-    <br />
-    BareMinimum2d takes the dimensions of
-    <br />
-    its parent and it will always be centered.
-    <br />
-    <br />
-    Use BareMinimum2d to specify as many polygons,
-    <br />
-    lines, ellipses and points as you like.
-    <br />
+    <a href={URL_SOURCE_PROPS_DEMO1} target='_blank' rel='noopener noreferrer'>
+      Props
+    </a>
   </div>
 )
 

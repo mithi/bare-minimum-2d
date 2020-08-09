@@ -17,12 +17,16 @@ import { URL_SOURCE_CODE_DEMO2 } from '../links'
 
 const DemoSticky = ({ t }) => (
   <div style={{ position: 'fixed', color: '#ffffff' }} className='sticky-div'>
-    <a href={URL_SOURCE_CODE_DEMO2}>Source code</a>
-    <br />
-    <br />
-    BareMinimum2d can be used for on-the-fly animations
-    <br />
-    {t}
+    <p>
+      BareMinimum2d can be used for on-the-fly animations
+      <br />
+      {t}
+    </p>
+    <p>
+      <a href={URL_SOURCE_CODE_DEMO2} target='_blank' rel='noopener noreferrer'>
+        Source code
+      </a>
+    </p>
   </div>
 )
 

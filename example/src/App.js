@@ -21,13 +21,28 @@ const stickyHome = {
 
 const LandingPage = () => (
   <div style={{ marginTop: '30px', marginLeft: '10px' }}>
-    <Link to='/demo1'>Demo1</Link>
+    <Link to='/demo1'>Demo1. </Link>
     <br />
-    <Link to='/demo2'>Demo2</Link>
+    <Link to='/demo2'>Demo2. </Link>
     <br />
-    <Link to='/demo3'>Demo3</Link>
+    <Link to='/demo3'>Demo3. </Link>
     <br />
-    <a href={URL_REPO}>Fork me on Github</a>
+    <a href={URL_REPO} target='_blank' rel='noopener noreferrer'>
+      Code Repository.
+    </a>
+    <h1>{'<BareMinimum2d />'}</h1>
+    <p>
+      BareMinimum2d is a low-level and lightweight React component you can use
+      <br />
+      to render points, lines, ellipses, and polygons on the screen.
+      <br />
+    </p>
+    <p>
+      Go check out the three demos lined above and if you're interested in using
+      it,
+      <br />
+      you can checkout the repository (also linked above).
+    </p>
   </div>
 )
 
