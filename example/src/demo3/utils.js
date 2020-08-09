@@ -1,7 +1,7 @@
 const pickRandom = (list) => list[Math.floor(Math.random() * list.length)]
 
 const skewedRandom = (list, element) =>
-  Math.random() > 0.95 ? pickRandom(list) : element
+  Math.random() > 0.99 ? pickRandom(list) : element
 
 const rotatedLine = (line, theta) => {
   const x0 = line.x0 * Math.cos(theta) - line.y0 * Math.sin(theta)
@@ -46,7 +46,7 @@ const STICKY_DIV_STYLE = {
   color: pickRandom(NINETEEN_COLORS)
 }
 
-const THREE_SIZES = [35, 70, 105]
+const THREE_SIZES = [40, 60, 95]
 export {
   pickRandom,
   skewedRandom,

@@ -26,63 +26,75 @@ const CONTAINER = {
   yRange: 1000
 }
 
-const R = 200
+const R = 225
+const numberOfColors = 15
 
 class PinWheelShapesManager {
-  oldPointColor = NINETEEN_COLORS[1]
-  oldPointSize = THREE_SIZES[1]
-  oldPoint2Color = NINETEEN_COLORS[0]
-  oldPoint2Size = THREE_SIZES[0]
-  oldPlusColor = NINETEEN_COLORS[2]
-  oldPlusSize = THREE_SIZES[2]
-
+  savedColors = Array.apply(null, Array(numberOfColors)).map((_) =>
+    pickRandom(NINETEEN_COLORS)
+  )
+  savedSizes = Array.apply(null, Array(numberOfColors)).map((_) =>
+    pickRandom(THREE_SIZES)
+  )
   L1 = { x0: -R, y0: 0, x1: R, y1: 0 }
   L2 = { x0: 0, y0: -R, x1: 0, y1: R }
 
   update(theta) {
+    const newColors = this.savedColors.map((color) =>
+      skewedRandom(NINETEEN_COLORS, color)
+    )
+    const newSizes = this.savedSizes.map((size) =>
+      skewedRandom(THREE_SIZES, size)
+    )
+
     const line1 = rotatedLine(this.L1, -theta)
     const line2 = rotatedLine(this.L2, -theta)
+    const line3 = rotatedLine(this.L1, theta)
+    const line4 = rotatedLine(this.L2, theta)
+
+    const polygon = {
+      x: [line3.x0, line4.x0, line3.x1],
+      y: [line3.y0, line4.y0, line4.y1],
+      fillColor: newColors[2],
+      fillOpacity: 1,
+      borderColor: newColors[1],
+      borderOpacity: 1.0,
+      borderSize: newSizes[1],
+      type: 'polygon',
+      id: 'body'
+    }
+
     const lines = {
       x0: [line1.x0, line2.x0],
       y0: [line1.y0, line2.y0],
       x1: [line1.x1, line2.x1],
       y1: [line1.y1, line2.y1],
-      color: skewedRandom(NINETEEN_COLORS, this.oldPlusColor),
+      color: newColors[0],
       opacity: 1.0,
-      size: skewedRandom(THREE_SIZES, this.oldPlusSize),
+      size: newSizes[0],
       type: 'lines',
       id: 'two-lines-center-cross'
     }
 
-    const points = {
-      x: [line1.x0, line1.x1, line2.x0, line2.x1],
-      y: [line1.y0, line1.y1, line2.y0, line2.y1],
-      color: skewedRandom(NINETEEN_COLORS, this.oldPointColor),
+    const linePointsX = [line1.x0, line1.x1, line2.x0, line2.x1, 0]
+    const linePointsY = [line1.y0, line1.y1, line2.y0, line2.y1, 0]
+
+    const pointsX = [...linePointsX, ...linePointsX]
+    const pointsY = [...linePointsY, ...linePointsY]
+    const newPoints = pointsX.map((pointX, i) => ({
+      x: [pointX],
+      y: [pointsY[i]],
       opacity: 1.0,
-      size: skewedRandom(THREE_SIZES, this.oldPointSize),
+      size: newSizes[i + 3],
+      color: newColors[i + 3],
       type: 'points',
-      id: 'points-1'
-    }
+      id: 'points' + i
+    }))
 
-    const points2 = {
-      x: [line1.x0, line1.x1, line2.x0, line2.x1],
-      y: [line1.y0, line1.y1, line2.y0, line2.y1],
-      color: skewedRandom(NINETEEN_COLORS, this.oldPoint2Color),
-      opacity: 1.0,
-      size: skewedRandom(THREE_SIZES, this.oldPoint2Size),
-      type: 'points',
-      id: 'points-2'
-    }
+    this.savedColors = newColors
+    this.savedSizes = newSizes
 
-    this.oldPointColor = points.color
-    this.oldPointSize = points.size
-    this.oldPoint2Color = points2.color
-    this.oldPoint2Size = points2.size
-
-    this.oldPlusColor = lines.color
-    this.oldPlusSize = points.size
-
-    return [points, points2, lines]
+    return [...newPoints, lines, polygon]
   }
 }
 
