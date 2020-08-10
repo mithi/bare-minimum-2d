@@ -2,7 +2,7 @@
 
 | Responsive Illustrations                                                            | Generate On-the-fly Animations                                                      | Interactive Applications                                                            |
 | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| [<img src="./example/src/demo1/demo.svg" height="300px" width="270px">][demo_link1] | [<img src="./example/src/demo2/demo.svg" height="300px" width="270px">][demo_link2] | [<img src="./example/src/demo3/demo.svg" height="300px" width="270px">][demo_link3] |
+| [<img src="./src/demo1/demo.svg" height="300px" width="270px">][demo_link1] | [<img src="./src/demo2/demo.svg" height="300px" width="270px">][demo_link2] | [<img src="./src/demo3/demo.svg" height="300px" width="270px">][demo_link3] |
 | [demo][demo_link1]                                                                  | [demo][demo_link2]                                                                  | [demo][demo_link3]                                                                  |
 
 [demo_link1]: https://bare-minimum-2d.netlify.app/demo1
