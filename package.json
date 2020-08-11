@@ -1,7 +1,20 @@
 {
   "name": "bare-minimum-2d",
-  "version": "0.1.0",
-  "description": "A lightweight react component that renders points, lines, and polygons on an svg",
+  "version": "0.1.11",
+  "description": "An extremely lightweight React component for plotting points, lines, ellipses, and polygons on an inline SVG",
+  "keywords": [
+    "svg",
+    "react",
+    "graphing",
+    "plotting",
+    "data",
+    "visualization",
+    "graph",
+    "plot",
+    "react-component",
+    "data-visualization",
+    "svg"
+  ],
   "author": "mithi",
   "license": "MIT",
   "repository": "mithi/bare-minimum-2d",
