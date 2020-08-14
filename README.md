@@ -33,17 +33,17 @@ This is [an example](./example/src/demo1/demoProps.js) of what you can pass to a
 You pass it like so:
 
 ```jsx
-<div style={{ width: '100%', height: '600px' }}>
+<div style={{ width: '100%', height: '100vh' }}>
   <BareMinimum2d {...{ data, container }} />
 </div>
 ```
 
-The component takes the dimensions of it's parent and is always centered
+The component takes the dimensions of its parent and is always centered
 
 ## Everything you need to know explained in two minutes
 
 A `BareMinimum2d` component only has two props: `container` and `data`.
-`container` is a small hash-like type object with exactly four elements and `data` is an array containing hash-like objects.
+`container` is a small hash-like type object with exactly four elements. `data` is an array containing hash-like objects.
 
 Example:
 
@@ -58,19 +58,19 @@ const container = {
 const data = [{
   x: [0],
   y: [-20],
-  color: COG_COLOR,
+  color: "#FFFFFF",
   opacity: 1.0,
   size: 10,
   type: 'points',
   id: 'center'
 }]
 
-<div style={{ width: "100%", height: "600px" }}>
+<div style={{ width: "100%", height: "100vh" }}>
   <BareMinimum2d {...{ data, container }} />
 </div>
 ```
 
-`container.color` and `container.opacity` are specifies the canvas color of `BareMinimum2d`.
+`container.color` and `container.opacity` specifies the canvas color of `BareMinimum2d`.
 
 The cartesian coordinate system of `BareMinimum` will follow the
 diagram below given `container.xRange` and `container.yRange`.
@@ -96,13 +96,13 @@ the following:
 | ------ | -------- | ------ | -------- |
 | plural | singular | plural | singular |
 
-Polygon elements will ALWAYS be declared on the SVG first, so they will be at the bottom layer.
-Then **lines**, **ellipses**, and **points**. For each type of element, those elements will be stacked based
-on the order they are declared. This means that the last element declared of type `points`
-in the `data` array will be at the most top layer while the first polygon in the
-`data` array will be rendered at the most bottom layer, even if the polygon is declared last.
+**`Polygon`** elements will ALWAYS be declared on the SVG first, so they will be at the bottom layer.
+Then **`lines`**, **`ellipses`**, and **`points`**. For each type of element, those elements will be stacked based
+on the order they are declared. This means that the last element declared of type **`points`**
+in the **`data`** array will be at the most top layer while the first **`polygon`** in the
+**`data`** array will be rendered at the most bottom layer, even if the **`polygon`** is declared last.
 
-All attributes are ALWAYS required, nothing is optional because there are no default values. The `id` attribute must be unique.
+All attributes are ALWAYS required, nothing is optional because there are no default values. The `id` attribute must be unique for each element of the `data` array.
 
 END
 
