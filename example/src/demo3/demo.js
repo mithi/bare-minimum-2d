@@ -151,10 +151,10 @@ class Demo extends React.Component {
 
     const currentX = w / 2 - x
     const currentY = h / 2 - y
-    const theta = Math.atan2(currentY, currentX)
+    this.theta = Math.atan2(currentY, currentX)
 
     this.h = h
-    const data = this.pinWheel.update(theta)
+    const data = this.pinWheel.update(this.theta)
 
     this.setState({
       x: currentX,
