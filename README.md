@@ -3,8 +3,8 @@
 > An extremely lightweight React component for plotting points, lines, ellipses, and polygons on an inline SVG
 
 [![NPM](https://img.shields.io/npm/v/bare-minimum-2d.svg)](https://www.npmjs.com/package/bare-minimum-2d)
-[![MINIFIED](https://img.shields.io/bundlephobia/min/bare-minimum-2d?color=%2300BCD4&label=minified)](https://bundlephobia.com/result?p=bare-minimum-2d@0.1.0)
-[![GZIPPED](https://img.shields.io/bundlephobia/minzip/bare-minimum-2d?color=%2300BCD4&label=minified%20%2B%20gzipped)](https://bundlephobia.com/result?p=bare-minimum-2d@0.1.0)
+[![MINIFIED](https://img.shields.io/bundlephobia/min/bare-minimum-2d?color=%2300BCD4&label=minified)](https://bundlephobia.com/result?p=bare-minimum-2d)
+[![GZIPPED](https://img.shields.io/bundlephobia/minzip/bare-minimum-2d?color=%2300BCD4&label=minified%20%2B%20gzipped)](https://bundlephobia.com/result?p=bare-minimum-2d)
 
 ## Demo Applications
 
@@ -48,6 +48,8 @@ A `BareMinimum2d` component only has two props: `container` and `data`.
 Example:
 
 ```jsx
+import BareMinimum2d from 'bare-minimum-2d'
+
 const container = {
   color: '#0000FF',
   opacity: 0.2,
