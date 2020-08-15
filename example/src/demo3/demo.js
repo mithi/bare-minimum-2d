@@ -130,7 +130,7 @@ class PinWheelShapesManager {
     this.savedSizes = newSizes
     this.savedColorsPolygon = newColorsPolygon
 
-    return [...newPoints, lines, polygon]
+    return [polygon, lines, ...newPoints]
   }
 }
 class Demo extends React.Component {

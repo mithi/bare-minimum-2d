@@ -69,7 +69,7 @@ const legs = {
   x1: [-269, -355, -269, 269, 335, 269],
   y1: [224, 0, -224, -224, 0, 224],
   color: LEG_COLOR,
-  opacity: 0.8,
+  opacity: 0.9,
   size: LINE_SIZE,
   type: 'lines',
   id: 'six-legs'
@@ -79,7 +79,7 @@ const body = {
   x: [-90, -145, -90, 90, 145, 90],
   y: [115, -20, -115, -115, -20, 115],
   fillColor: BODY_COLOR,
-  fillOpacity: 0.3,
+  fillOpacity: 0.5,
   borderColor: BODY_COLOR,
   borderOpacity: 1.0,
   borderSize: LINE_SIZE,
@@ -132,16 +132,17 @@ const ellipse2 = {
 const props = {
   container,
   data: [
+    hexagon,
+
     jointsFemur,
     jointsTibia,
-    centerPoint,
     headPoint,
-    vertices,
-    legs,
-    hexagon,
-    body,
     ellipse1,
-    ellipse2
+    ellipse2,
+    legs,
+    body,
+    vertices,
+    centerPoint
   ]
 }
 
