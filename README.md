@@ -96,11 +96,8 @@ the following:
 | ------ | -------- | ------ | -------- |
 | plural | singular | plural | singular |
 
-**`Polygon`** elements will ALWAYS be declared on the SVG first, so they will be at the bottom layer.
-Then **`lines`**, **`ellipses`**, and **`points`**. For each type of element, those elements will be stacked based
-on the order they are declared. This means that the last element declared of type **`points`**
-in the **`data`** array will be at the most top layer while the first **`polygon`** in the
-**`data`** array will be rendered at the most bottom layer, even if the **`polygon`** is declared last.
+Elements of the `data` array will be stacked based on the order they are declared.
+The first element will be at the most bottom layer while the last element of the array will be at the top.
 
 All attributes are ALWAYS required, nothing is optional because there are no default values. The `id` attribute must be unique for each element of the `data` array.
 
