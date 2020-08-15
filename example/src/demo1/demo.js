@@ -1,6 +1,6 @@
 import React from 'react'
 import { ResizeObserver } from '@juggle/resize-observer'
-import { BareMinimum2d } from 'bare-minimum-2d'
+import BareMinimum2d from 'bare-minimum-2d'
 import DEMO_PROPS from './demoProps'
 import { URL_SOURCE_CODE_DEMO1, URL_SOURCE_PROPS_DEMO1 } from '../links'
 

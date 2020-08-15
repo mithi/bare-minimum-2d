@@ -1,5 +1,5 @@
 import React from 'react'
-import { BareMinimum2d } from 'bare-minimum-2d'
+import BareMinimum2d from 'bare-minimum-2d'
 import { URL_SOURCE_CODE_DEMO3 } from '../links'
 
 import {

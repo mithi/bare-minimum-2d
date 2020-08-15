@@ -82,4 +82,4 @@ class BareMinimum2d extends React.PureComponent {
   }
 }
 
-export { BareMinimum2d }
+export default BareMinimum2d
