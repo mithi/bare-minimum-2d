@@ -1,5 +1,5 @@
 import React from 'react'
-import { PointDefinitions, Points, Lines, Polygons, Ellipses } from './shapes'
+import { Polygon, Ellipse, Lines, Point } from './shapes'
 
 const svgProps = {
   version: '1.1',
@@ -14,12 +14,34 @@ const Paper = ({ color, opacity }) => (
   <rect width='100%' height='100%' fill={color} opacity={opacity} />
 )
 
+const svgElements = (data, transforms) => {
+  const elements = data.map((element) => {
+    if (element.type === 'lines') {
+      return <Lines {...element} {...{ transforms }} key={element.id} />
+    }
+
+    if (element.type === 'polygon') {
+      return <Polygon {...element} {...{ transforms }} key={element.id} />
+    }
+
+    if (element.type === 'ellipse') {
+      return <Ellipse {...element} {...{ transforms }} key={element.id} />
+    }
+
+    const { size, color, opacity, id } = element
+    return element.x.map((x, i) => (
+      <Point
+        {...{ x, y: element.y[i], size, color, opacity, id, i, transforms }}
+        key={`${id}-${i}`}
+      />
+    ))
+  })
+
+  return elements.flat()
+}
 /**************************
  * Minimal Plot
  **************************/
-
-const filterSet = (data, type) =>
-  data.filter((dataSet) => dataSet.type === type)
 
 class BareMinimum2d extends React.PureComponent {
   xRange = null
@@ -43,11 +65,6 @@ class BareMinimum2d extends React.PureComponent {
     this.xRange = container.xRange
     this.yRange = container.yRange
 
-    const pointSets = filterSet(data, 'points')
-    const lineSets = filterSet(data, 'lines')
-    const polygonSets = filterSet(data, 'polygon')
-    const ellipseSets = filterSet(data, 'ellipse')
-
     const transforms = {
       tx: this.transformX,
       ty: this.transformY
@@ -59,13 +76,10 @@ class BareMinimum2d extends React.PureComponent {
     return (
       <svg {...svgProps} {...{ viewBox }}>
         <Paper {...{ color, opacity }} />
-        <PointDefinitions sets={pointSets} />
-        <Polygons sets={polygonSets} {...{ transforms }} />
-        <Lines sets={lineSets} {...{ transforms }} />
-        <Ellipses sets={ellipseSets} {...{ transforms }} />
-        <Points sets={pointSets} {...{ transforms }} />
+        {svgElements(data, transforms)}
       </svg>
     )
   }
 }
+
 export { BareMinimum2d }

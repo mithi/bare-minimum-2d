@@ -1,43 +1,25 @@
 import React from 'react'
 
 /**************************
- * POINTS
+ * POINT
  **************************/
-
-const PointDefinitions = ({ sets }) => {
-  const pointDefinitions = sets.map(({ size, color, opacity, id }) => {
-    const props = { opacity, id, cx: 0, cy: 0, r: size, fill: color }
-    return <circle {...props} key={id} />
-  })
-  return <defs>{pointDefinitions}</defs>
-}
-
-const createPointInstances = (points, transforms) => {
-  return points.x.map((x, i) => {
-    return (
-      <use
-        x={transforms.tx(x)}
-        y={transforms.ty(points.y[i])}
-        href={`#${points.id}`}
-        key={points.id + i}
-      />
-    )
-  })
-}
-
-const Points = ({ sets, transforms }) =>
-  sets.reduce(
-    (points, pointSet) => [
-      ...points,
-      createPointInstances(pointSet, transforms)
-    ],
-    []
-  )
+const Point = ({ x, y, transforms, size, color, opacity, id, i }) => (
+  <circle
+    {...{
+      opacity,
+      id: `${id}-${i}`,
+      cx: transforms.tx(x),
+      cy: transforms.ty(y),
+      r: size,
+      fill: color
+    }}
+  />
+)
 
 /**************************
  * LINES
  **************************/
-const LineSet = ({ size, color, opacity, x0, x1, y0, y1, transforms, id }) => {
+const Lines = ({ size, color, opacity, x0, x1, y0, y1, transforms, id }) => {
   const d = x0.reduce((currentD, rawX0, i) => {
     const [currentX0, currentX1, currentY0, currentY1] = [
       transforms.tx(rawX0),
@@ -51,15 +33,9 @@ const LineSet = ({ size, color, opacity, x0, x1, y0, y1, transforms, id }) => {
   return <path d={d} stroke={color} strokeWidth={size} {...{ opacity, id }} />
 }
 
-const Lines = ({ sets, transforms }) =>
-  sets.map((lineSet) => (
-    <LineSet {...lineSet} {...{ transforms }} key={lineSet.id} />
-  ))
-
 /**************************
- * Polygon
+ * POLYGON
  **************************/
-
 const Polygon = ({
   x,
   y,
@@ -88,13 +64,9 @@ const Polygon = ({
   }
   return <polygon {...props} />
 }
-const Polygons = ({ sets, transforms }) =>
-  sets.map((polygon) => (
-    <Polygon {...polygon} {...{ transforms }} key={polygon.id} />
-  ))
 
 /**************************
- * Ellipse
+ * ELLIPSE
  **************************/
 const Ellipse = ({
   cx,
@@ -128,9 +100,5 @@ const Ellipse = ({
   }
   return <ellipse {...props} />
 }
-const Ellipses = ({ sets, transforms }) =>
-  sets.map((ellipse) => (
-    <Ellipse {...ellipse} {...{ transforms }} key={ellipse.id} />
-  ))
 
-export { PointDefinitions, Points, Lines, Polygons, Ellipses }
+export { Point, Lines, Polygon, Ellipse }
