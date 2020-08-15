@@ -3,8 +3,8 @@
 > An extremely lightweight React component for plotting points, lines, ellipses, and polygons on an inline SVG
 
 [![NPM](https://img.shields.io/npm/v/bare-minimum-2d.svg)](https://www.npmjs.com/package/bare-minimum-2d)
-[![MINIFIED](https://img.shields.io/bundlephobia/min/bare-minimum-2d?color=%2300BCD4&label=minified)](https://bundlephobia.com/result?p=bare-minimum-2d)
-[![GZIPPED](https://img.shields.io/bundlephobia/minzip/bare-minimum-2d?color=%2300BCD4&label=minified%20%2B%20gzipped)](https://bundlephobia.com/result?p=bare-minimum-2d)
+[![MINIFIED](https://img.shields.io/bundlephobia/min/bare-minimum-2d@0.2.0?color=%2300BCD4&label=minified)](https://bundlephobia.com/result?p=bare-minimum-2d@0.2.0)
+[![GZIPPED](https://img.shields.io/bundlephobia/minzip/bare-minimum-2d@0.2.0?color=%2300BCD4&label=minified%20%2B%20gzipped)](https://bundlephobia.com/result?p=bare-minimum-2d@0.2.0)
 
 ## Demo Applications
 
@@ -33,6 +33,8 @@ This is [an example](./example/src/demo1/demoProps.js) of what you can pass to a
 You pass it like so:
 
 ```jsx
+import BareMinimum2d from 'bare-minimum-2d'
+
 <div style={{ width: '100%', height: '100vh' }}>
   <BareMinimum2d {...{ data, container }} />
 </div>
