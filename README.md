@@ -1,5 +1,3 @@
-This is the last successful build
-
 # A Bare Minimum 2D Plotter
 
 > An extremely lightweight React component for plotting points, lines, ellipses, and polygons on an inline SVG
@@ -35,6 +33,8 @@ This is [an example](./example/src/demo1/demoProps.js) of what you can pass to a
 You pass it like so:
 
 ```jsx
+import BareMinimum2d from 'bare-minimum-2d'
+
 <div style={{ width: '100%', height: '100vh' }}>
   <BareMinimum2d {...{ data, container }} />
 </div>
