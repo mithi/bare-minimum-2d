@@ -4,16 +4,16 @@
   "description": "An extremely lightweight React component for plotting points, lines, ellipses, and polygons on an inline SVG",
   "keywords": [
     "svg",
-    "react",
-    "graphing",
-    "plotting",
     "data",
     "visualization",
     "graph",
     "plot",
+    "chart",
+    "graphing",
+    "plotting",
+    "react",
     "react-component",
-    "data-visualization",
-    "svg"
+    "data-visualization"
   ],
   "author": "mithi",
   "license": "MIT",
@@ -25,8 +25,8 @@
     "node": ">=10"
   },
   "scripts": {
-    "build": "microbundle-crl --no-compress --format modern,cjs",
-    "start": "microbundle-crl watch --no-compress --format modern,cjs",
+    "build": "microbundle-crl --format modern,cjs",
+    "start": "microbundle-crl watch --format modern,cjs",
     "prepare": "run-s build",
     "predeploy": "cd example && npm install && npm run build"
   },
