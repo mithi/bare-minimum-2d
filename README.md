@@ -92,8 +92,7 @@ Position (0, 0) will always be at the center of the rendered component.
 
 Please take a look at more [complex example data prop](./example/src/demo1/demoProps.js) to get the idea.
 
-Each element of the array `data` should be a hash-like object
-with a `type` key which should have a value that is one of
+Each element of the array `data` should be a hash-like objectwith a `type` key which should have a value that is one of
 the following:
 
 | points | ellipse  | lines  | polygons |
@@ -106,6 +105,9 @@ The first element will be at the most bottom layer while the last element of the
 All attributes are ALWAYS required, nothing is optional because there are no default values. The `id` attribute must be unique for each element of the `data` array.
 
 END
+
+## Contributing 
+PRs welcome! Please read the [contributing guidelines](https://github.com/mithi/hexapod/blob/master/CONTRIBUTING.md) and the [commit style guide](https://github.com/mithi/hexapod/wiki/A-Commit-Style-Guide) else your PR might not be merged 🙁. 
 
 ## License
 
