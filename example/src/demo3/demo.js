@@ -22,6 +22,8 @@ import {
 
  A snapshot of an svg given a possible combination is
  also saved in this directory 'demo.svg'
+
+ The interaction only works on desktop
  *****/
 
 const DemoSticky = ({ x, y, theta }) => (

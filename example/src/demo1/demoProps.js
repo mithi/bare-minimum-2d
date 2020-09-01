@@ -133,7 +133,6 @@ const props = {
   container,
   data: [
     hexagon,
-
     jointsFemur,
     jointsTibia,
     headPoint,
