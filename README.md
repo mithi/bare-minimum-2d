@@ -24,7 +24,7 @@
 ## Install
 
 ```bash
-npm install --save bare-minimum-2d
+npm install bare-minimum-2d
 ```
 
 ## Usage
@@ -34,8 +34,7 @@ You pass it like so:
 
 ```jsx
 import BareMinimum2d from 'bare-minimum-2d'
-
-<div style={{ width: '100%', height: '100vh' }}>
+;<div style={{ width: '100%', height: '100vh' }}>
   <BareMinimum2d {...{ data, container }} />
 </div>
 ```
@@ -53,24 +52,24 @@ Example:
 import BareMinimum2d from 'bare-minimum-2d'
 
 const container = {
-  color: '#0000FF',
-  opacity: 0.2,
-  xRange: 300,
-  yRange: 500
+    color: '#0000FF',
+    opacity: 0.2,
+    xRange: 300,
+    yRange: 500
 }
 
 const data = [{
-  x: [0],
-  y: [-20],
-  color: "#FFFFFF",
-  opacity: 1.0,
-  size: 10,
-  type: 'points',
-  id: 'center'
+    x: [0],
+    y: [-20],
+    color: "#FFFFFF",
+    opacity: 1.0,
+    size: 10,
+    type: 'points',
+    id: 'sample'
 }]
 
 <div style={{ width: "100%", height: "100vh" }}>
-  <BareMinimum2d {...{ data, container }} />
+    <BareMinimum2d {...{ data, container }} />
 </div>
 ```
 
@@ -106,8 +105,9 @@ All attributes are ALWAYS required, nothing is optional because there are no def
 
 END
 
-## Contributing 
-PRs welcome! Please read the [contributing guidelines](https://github.com/mithi/hexapod/blob/master/CONTRIBUTING.md) and the [commit style guide](https://github.com/mithi/hexapod/wiki/A-Commit-Style-Guide) else your PR might not be merged 🙁. 
+## Contributing
+
+PRs welcome! Please read the [contributing guidelines](https://github.com/mithi/hexapod/blob/master/CONTRIBUTING.md) and the [commit style guide](https://github.com/mithi/hexapod/wiki/A-Commit-Style-Guide) else your PR might not be merged 🙁.
 
 ## License
 
