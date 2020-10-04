@@ -41,6 +41,7 @@
     "jest": "^26.4.2",
     "microbundle": "^0.12.3",
     "prettier": "^2.0.4",
+    "react": "^16.13.1",
     "react-test-renderer": "^16.13.1"
   },
   "files": [
