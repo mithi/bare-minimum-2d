@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "start": "parcel serve ./public/index.html",
-    "build": "parcel build ./public/index.html --out-dir ./build"
+    "build": "parcel build ./public/index.html --experimental-scope-hoisting --out-dir ./build"
   },
   "dependencies": {
     "@juggle/resize-observer": "^3.2.0",
@@ -15,7 +15,6 @@
     "react-dom": "^16.13.1"
   },
   "devDependencies": {
-    "@babel/plugin-syntax-object-rest-spread": "^7.8.3",
     "parcel-bundler": "^1.12.4"
   },
   "browserslist": [
