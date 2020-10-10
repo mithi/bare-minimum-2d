@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "parcel serve ./public/index.html --out-dir ./build",
+    "start": "parcel serve ./public/index.html",
     "build": "parcel build ./public/index.html --out-dir ./build"
   },
   "dependencies": {
