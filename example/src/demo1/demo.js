@@ -1,5 +1,4 @@
 import React from 'react'
-import { ResizeObserver } from '@juggle/resize-observer'
 import BareMinimum2d from 'bare-minimum-2d'
 import DEMO_PROPS from './demoProps'
 import { URL_SOURCE_CODE_DEMO1, URL_SOURCE_PROPS_DEMO1 } from '../links'
@@ -26,13 +25,10 @@ import { URL_SOURCE_CODE_DEMO1, URL_SOURCE_PROPS_DEMO1 } from '../links'
 
  *****/
 
-const DemoSticky = ({ height, width }) => (
+const DemoSticky = () => (
   <div style={{ position: 'fixed' }} className='sticky-div'>
     <p>
       Resize the window.
-      <br />
-      {height} x {width}
-      <br />
     </p>
     <p>
       BareMinimum2d takes the dimensions of
@@ -56,40 +52,16 @@ const DemoSticky = ({ height, width }) => (
 )
 
 class Demo extends React.PureComponent {
-  resizeObserver = null
-  element = React.createRef()
-  width = '100%'
-
-  state = {
-    height: window.innerHeight
-  }
-
-  componentDidMount() {
-    this.resizeObserver = new ResizeObserver((entries, _) => {
-      const { inlineSize } = entries[0].contentBoxSize
-      const { width } = entries[0].contentRect
-      this.setState({
-        height: window.innerHeight
-      })
-      this.width = inlineSize || width
-    })
-    this.resizeObserver.observe(this.element.current)
-  }
-
-  componentWillUnmount() {
-    this.resizeObserver.disconnect()
-  }
 
   render() {
-    const { height } = this.state
 
     return (
-      <div ref={this.element} style={{ height, width: '100%' }}>
+      <div style={{ height: "100vh", width: '100%' }}>
         <BareMinimum2d
           data={DEMO_PROPS.data}
           container={DEMO_PROPS.container}
         />
-        <DemoSticky {...{ height, width: this.width }} />
+        <DemoSticky />
       </div>
     )
   }
