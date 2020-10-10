@@ -1,0 +1,5 @@
+[build]
+  command = "npm i -g microbundle && npm run build && cd example && npm install && npm run build"
+
+[build.environment]
+  NODE_ENV = "production"
