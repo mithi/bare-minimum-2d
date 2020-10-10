@@ -27,15 +27,20 @@
   "scripts": {
     "build": "microbundle build --jsx React.createElement --format modern,cjs",
     "start": "microbundle watch --jsx React.createElement --format modern,cjs",
+    "test": "jest",
     "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
     "react": "^16.0.0"
   },
   "devDependencies": {
+    "@babel/preset-react": "^7.10.4",
+    "babel-jest": "^26.3.0",
     "jest": "^26.5.2",
     "microbundle": "^0.12.3",
-    "prettier": "^2.0.4"
+    "prettier": "^2.0.4",
+    "react": "^16.13.1",
+    "react-test-renderer": "^16.13"
   },
   "files": [
     "dist"

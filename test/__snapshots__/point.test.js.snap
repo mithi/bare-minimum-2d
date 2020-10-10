@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<svg
+  baseProfile="full"
+  height="100%"
+  preserveAspectRatio="xMidYMid slice"
+  version="1.1"
+  viewBox="0 0 300 500"
+  width="100%"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <rect
+    fill="#0000FF"
+    height="100%"
+    opacity={0.2}
+    width="100%"
+  />
+  <circle
+    cx={150}
+    cy={270}
+    fill="#FFFFFF"
+    id="sample-0"
+    opacity={1}
+    r={10}
+  />
+</svg>
+`;
