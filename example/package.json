@@ -4,19 +4,19 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build"
+    "start": "parcel serve ./public/index.html --out-dir ./build",
+    "build": "parcel build ./public/index.html --out-dir ./build"
   },
   "dependencies": {
     "@juggle/resize-observer": "^3.2.0",
     "bare-minimum-2d": "file:..",
     "react-router-dom": "^5.2.0",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-scripts": "^3.4.1"
+    "react-dom": "^16.13.1"
   },
   "devDependencies": {
-    "@babel/plugin-syntax-object-rest-spread": "^7.8.3"
+    "@babel/plugin-syntax-object-rest-spread": "^7.8.3",
+    "parcel-bundler": "^1.12.4"
   },
   "browserslist": [
     ">0.2%",
