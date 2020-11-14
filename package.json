@@ -39,7 +39,7 @@
     "babel-jest": "^26.3.0",
     "cross-env": "^7.0.2",
     "jest": "^26.4.2",
-    "microbundle": "^0.12.3",
+    "microbundle": "^0.12.4",
     "prettier": "^2.0.4",
     "react": "^16.13.1",
     "react-test-renderer": "^16.13.1"
