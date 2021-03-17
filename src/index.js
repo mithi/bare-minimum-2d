@@ -1,6 +1,30 @@
 import React from 'react'
 import { Polygon, Ellipse, Lines, Point } from './shapes'
 
+const elementTypeImplementations = {
+    lines: (element, transforms) => <Lines {...element} {...{ transforms }} key={element.id} />,
+    polygon: (element, transforms) => <Polygon {...element} {...{ transforms }} key={element.id} />,
+    ellipse: (element, transforms) => <Ellipse {...element} {...{ transforms }} key={element.id} />,
+    point: (element, transforms) => {
+        const { size, color, opacity, id } = element
+        return element.x.map((x, i) => (
+            <Point
+                {...{
+                    x,
+                    y: element.y[i],
+                    size,
+                    color,
+                    opacity,
+                    id,
+                    i,
+                    transforms,
+                }}
+                key={`${id}-${i}`}
+            />
+        ))
+    },
+}
+
 const svgProps = {
   version: '1.1',
   baseProfile: 'full',
@@ -14,30 +38,16 @@ const Paper = ({ color, opacity }) => (
   <rect width='100%' height='100%' fill={color} opacity={opacity} />
 )
 
-const svgElements = (data, transforms) => {
-  const elements = data.map((element) => {
-    if (element.type === 'lines') {
-      return <Lines {...element} {...{ transforms }} key={element.id} />
-    }
+const svgElements = (data, transforms, plugins) => {
+    const extendedElementTypeImplementations = plugins.reduce((extended, plugin) => {
+        return { ...extended, ...plugin }
+    }, elementTypeImplementations)
 
-    if (element.type === 'polygon') {
-      return <Polygon {...element} {...{ transforms }} key={element.id} />
-    }
-
-    if (element.type === 'ellipse') {
-      return <Ellipse {...element} {...{ transforms }} key={element.id} />
-    }
-
-    const { size, color, opacity, id } = element
-    return element.x.map((x, i) => (
-      <Point
-        {...{ x, y: element.y[i], size, color, opacity, id, i, transforms }}
-        key={`${id}-${i}`}
-      />
-    ))
-  })
-
-  return elements.flat()
+    const elements = data.map(element => {
+        const implementation = extendedElementTypeImplementations[element.type]
+        return implementation(element, transforms)
+    })
+    return elements.flat()
 }
 /**************************
  * Minimal Plot
@@ -61,7 +71,7 @@ class BareMinimum2d extends React.PureComponent {
   transformY = (y) => this.yRange / 2 - y
 
   render() {
-    const { container, data } = this.props
+    const { container, data, plugins } = this.props
     this.xRange = container.xRange
     this.yRange = container.yRange
 
@@ -76,7 +86,7 @@ class BareMinimum2d extends React.PureComponent {
     return (
       <svg {...svgProps} {...{ viewBox }}>
         <Paper {...{ color, opacity }} />
-        {svgElements(data, transforms)}
+        {svgElements(data, transforms, plugins)}
       </svg>
     )
   }

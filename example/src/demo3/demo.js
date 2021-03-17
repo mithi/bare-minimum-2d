@@ -12,17 +12,58 @@ import {
 } from './utils'
 
 /*****
- DEMO #3
+  DEMO #3
 
- This demo shows that the BareMinimum2d component
- can be used for interactive applications
+  This demo shows that the BareMinimum2d component
+  can be used for interactive applications
 
- The pinwheel's orientation, size and colors
- changes everytime you move your cursor
+  The pinwheel's orientation, size and colors
+  changes everytime you move your cursor
 
- A snapshot of an svg given a possible combination is
- also saved in this directory 'demo.svg'
+  A snapshot of an svg given a possible combination is
+  also saved in this directory 'demo.svg'
  *****/
+
+const Triangle = ({ x, y, transforms, size, color, opacity, id, i }) => {
+  const cx = transforms.tx(x)
+  const cy = transforms.ty(y)
+  const ySize = size * 0.8626
+  return (
+    <polygon
+      {...{
+        opacity,
+        id: `${id}-${i}`,
+        fill: color
+      }}
+      points={[
+        `${cx},${cy - ySize}`,
+        `${cx + size},${cy + ySize}`,
+        `${cx - size},${cy + ySize}`
+      ].join(' ')}
+    />
+  )
+}
+
+const trianglePlugin = {
+  triangle: (element, transforms) => {
+    const { size, color, opacity, id } = element
+    return element.x.map((x, i) => (
+      <Triangle
+        {...{
+          x,
+          y: element.y[i],
+          size,
+          color,
+          opacity,
+          id,
+          i,
+          transforms
+        }}
+        key={`${id}-${i}`}
+      />
+    ))
+  }
+}
 
 const DemoSticky = ({ x, y, theta }) => (
   <div style={{ position: 'fixed' }} className='sticky-div'>
@@ -122,7 +163,7 @@ class PinWheelShapesManager {
       opacity: 1.0,
       size: newSizes[i],
       color: newColors[i],
-      type: 'points',
+      type: i === 0 || i === 5 ? 'triangle' : 'point',
       id: 'points' + i
     }))
 
@@ -175,7 +216,10 @@ class Demo extends React.Component {
         style={divDimensionsStyle}
         onMouseMove={this._onMouseMove.bind(this)}
       >
-        <BareMinimum2d {...{ data, container: CONTAINER }} />
+        <BareMinimum2d
+          {...{ data, container: CONTAINER }}
+          plugins={[trianglePlugin]}
+        />
         <DemoSticky {...{ x, y, theta: this.theta }} />
       </div>
     )
