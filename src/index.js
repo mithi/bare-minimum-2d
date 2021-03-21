@@ -11,7 +11,7 @@ const elementTypeImplementations = {
   ellipse: (element, transforms) => (
     <Ellipse {...element} {...{ transforms }} key={element.id} />
   ),
-  point: (element, transforms) => {
+  points: (element, transforms) => {
     const { size, color, opacity, id } = element
     return element.x.map((x, i) => (
       <Point
@@ -58,6 +58,7 @@ const svgElements = (data, transforms, plugins) => {
     const implementation = extendedElementTypeImplementations[element.type]
     return implementation(element, transforms)
   })
+
   return elements.flat()
 }
 /**************************
@@ -70,12 +71,12 @@ class BareMinimum2d extends React.PureComponent {
 
   /***
                   yRange/2
-                     |
-                     |
+                    |
+                    |
   -xRange/2 -------(0,0)--------- xRange/2
-                     |
-                     |
-                   -yRange/2
+                    |
+                    |
+                  -yRange/2
   ***/
 
   transformX = (x) => x + this.xRange / 2
@@ -83,13 +84,11 @@ class BareMinimum2d extends React.PureComponent {
 
   render() {
     const { container, data, plugins } = this.props
+
     this.xRange = container.xRange
     this.yRange = container.yRange
 
-    const transforms = {
-      tx: this.transformX,
-      ty: this.transformY
-    }
+    const transforms = { tx: this.transformX, ty: this.transformY }
 
     const viewBox = `0 0 ${container.xRange} ${container.yRange}`
     const { color, opacity } = container
