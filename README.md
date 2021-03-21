@@ -35,7 +35,7 @@ You pass it like so:
 ```jsx
 import BareMinimum2d from 'bare-minimum-2d'
 
-<div style={{ width: '100%', height: '100vh' }}>
+;<div style={{ width: '100%', height: '100vh' }}>
   <BareMinimum2d {...{ data, container }} />
 </div>
 ```
@@ -61,7 +61,7 @@ const container = {
 
 const data = [{
   x: [0],
-  y: [-20],
+  y: [0],
   color: "#FFFFFF",
   opacity: 1.0,
   size: 10,
@@ -92,10 +92,10 @@ Position (0, 0) will always be at the center of the rendered component.
 
 Please take a look at more [complex example data prop](./example/src/demo1/demoProps.js) to get the idea.
 
-Each element of the array `data` should be a hash-like objectwith a `type` key which should have a value that is one of
+Each element of the array `data` should be a hash-like object with a `type` key which should have a value that is one of
 the following:
 
-| points | ellipse  | lines  | polygons |
+| points | ellipse  | lines  | polygon  |
 | ------ | -------- | ------ | -------- |
 | plural | singular | plural | singular |
 
@@ -106,8 +106,9 @@ All attributes are ALWAYS required, nothing is optional because there are no def
 
 END
 
-## Contributing 
-PRs welcome! Please read the [contributing guidelines](https://github.com/mithi/hexapod/blob/master/CONTRIBUTING.md) and the [commit style guide](https://github.com/mithi/hexapod/wiki/A-Commit-Style-Guide) else your PR might not be merged 🙁. 
+## Contributing
+
+PRs welcome! Please read the [contributing guidelines](https://github.com/mithi/hexapod/blob/master/CONTRIBUTING.md) and the [commit style guide](https://github.com/mithi/hexapod/wiki/A-Commit-Style-Guide) else your PR might not be merged 🙁.
 
 ## License
 
