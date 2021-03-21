@@ -27,22 +27,24 @@
   "scripts": {
     "build": "microbundle build --jsx React.createElement --format modern,cjs",
     "start": "microbundle watch --jsx React.createElement --format modern,cjs",
+    "format": "prettier --config ./.prettierrc --write \"./src/*\"",
     "prepublishOnly": "npm run build",
     "predeploy": "cd example && npm install && npm run build",
-    "test": "jest"
+    "test": "jest",
+    "test-deploy": "npm run build && rm -rf node_modules && cd example && npm install && npm run build"
   },
   "peerDependencies": {
-    "react": "^16.0.0"
+    "react": "^16.14.0"
   },
   "devDependencies": {
-    "@babel/preset-react": "^7.10.4",
+    "@babel/preset-react": "^7.12.13",
     "babel-jest": "^26.3.0",
     "cross-env": "^7.0.2",
     "jest": "^26.4.2",
     "microbundle": "^0.12.4",
-    "prettier": "^2.0.4",
-    "react": "^16.13.1",
-    "react-test-renderer": "^16.13.1"
+    "prettier": "^2.2.1",
+    "react": "^16.14.0",
+    "react-test-renderer": "^16.14.0"
   },
   "files": [
     "dist"
