@@ -44,8 +44,8 @@ const Triangle = ({ x, y, transforms, size, color, opacity, id, i }) => {
   )
 }
 
-const trianglePlugin = {
-  triangle: (element, transforms) => {
+const trianglesPlugin = {
+  triangles: (element, transforms) => {
     const { size, color, opacity, id } = element
     return element.x.map((x, i) => (
       <Triangle
@@ -72,6 +72,7 @@ const DemoSticky = ({ x, y, theta }) => (
       <br />
       BareMinimum2d can be used for interactive applications.
       <br />
+      You can also add your pass your own shape implementation as a plugin.
     </p>
     <p>
       x: {x}
@@ -163,7 +164,7 @@ class PinWheelShapesManager {
       opacity: 1.0,
       size: newSizes[i],
       color: newColors[i],
-      type: i === 0 || i === 5 ? 'triangle' : 'point',
+      type: i === 0 || i === 5 ? 'triangles' : 'points',
       id: 'points' + i
     }))
 
@@ -218,7 +219,7 @@ class Demo extends React.Component {
       >
         <BareMinimum2d
           {...{ data, container: CONTAINER }}
-          plugins={[trianglePlugin]}
+          plugins={[trianglesPlugin]}
         />
         <DemoSticky {...{ x, y, theta: this.theta }} />
       </div>
