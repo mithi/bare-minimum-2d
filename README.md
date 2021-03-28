@@ -6,6 +6,10 @@
 [![MINIFIED](https://img.shields.io/bundlephobia/min/bare-minimum-2d@0.2.0?color=%2300BCD4&label=minified)](https://bundlephobia.com/result?p=bare-minimum-2d@0.2.0)
 [![GZIPPED](https://img.shields.io/bundlephobia/minzip/bare-minimum-2d@0.2.0?color=%2300BCD4&label=minified%20%2B%20gzipped)](https://bundlephobia.com/result?p=bare-minimum-2d@0.2.0)
 
+## Update
+You can now use your own shape implementation by passing it as a plugin (see [plugin section](./README.md#plugins) below for more information).
+Here's an awesome plugin ([repository/source code](https://github.com/fuddl/bare-minimum-text-marker)) by [@fuddl](https://github.com/fuddl/) that you can download from [npm](https://www.npmjs.com/package/bare-minimum-text-marker). It allows you add text and custom markers. Here's the [demo application](https://fuddl.github.io/bare-minimum-text-marker/) where it is used in conjuction with [Bare Minimum 3d](https://github.com/mithi/bare-minimum-3d).
+
 ## Demo Applications
 
 | Responsive Illustrations                                                            | On-The-Fly Animations                                                               | Interactive Applications                                                            |
