@@ -107,6 +107,11 @@ All attributes are ALWAYS required, nothing is optional because there are no def
 
 ### Plugins
 
+* [`text-marker`](https://www.npmjs.com/package/bare-minimum-text-marker) ([Demo](https://fuddl.github.io/bare-minimum-text-marker/))
+* [`quadratic-bezier`](https://www.npmjs.com/package/bare-minimum-quadratic-bezier) ([Demo](https://fuddl.github.io/bare-minimum-quadratic-bezier/))
+
+#### Create your own
+
 You can add your own shapes as a plugin for example, here's an example plugin written by [@fuddl](https://github.com/fuddl)
 
 ```jsx
