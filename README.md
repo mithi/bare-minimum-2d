@@ -6,9 +6,12 @@
 [![MINIFIED](https://img.shields.io/bundlephobia/min/bare-minimum-2d@0.2.0?color=%2300BCD4&label=minified)](https://bundlephobia.com/result?p=bare-minimum-2d@0.2.0)
 [![GZIPPED](https://img.shields.io/bundlephobia/minzip/bare-minimum-2d@0.2.0?color=%2300BCD4&label=minified%20%2B%20gzipped)](https://bundlephobia.com/result?p=bare-minimum-2d@0.2.0)
 
-## Update
+## Update: External Plugins 🥳
 You can now use your own shape implementation by passing it as a plugin (see [plugin section](./README.md#plugins) below for more information).
-Here's an awesome plugin ([repository/source code](https://github.com/fuddl/bare-minimum-text-marker)) by [@fuddl](https://github.com/fuddl/) that you can download from [npm](https://www.npmjs.com/package/bare-minimum-text-marker). It allows you add text and custom markers. Here's the [demo application](https://fuddl.github.io/bare-minimum-text-marker/) where it is used in conjuction with [Bare Minimum 3d](https://github.com/mithi/bare-minimum-3d).
+Below are a couple of plugins by [@fuddl](https://github.com/fuddl).
+
+* [`text-marker`](https://www.npmjs.com/package/bare-minimum-text-marker) ([Demo](https://fuddl.github.io/bare-minimum-text-marker/))
+* [`quadratic-bezier`](https://www.npmjs.com/package/bare-minimum-quadratic-bezier) ([Demo](https://fuddl.github.io/bare-minimum-quadratic-bezier/))
 
 ## Demo Applications
 
@@ -104,11 +107,6 @@ Elements of the `data` array will be stacked based on the order they are declare
 The first element will be at the most bottom layer while the last element of the array will be at the top.
 
 All attributes are ALWAYS required, nothing is optional because there are no default values. The `id` attribute must be unique for each element of the `data` array.
-
-### Plugins
-
-* [`text-marker`](https://www.npmjs.com/package/bare-minimum-text-marker) ([Demo](https://fuddl.github.io/bare-minimum-text-marker/))
-* [`quadratic-bezier`](https://www.npmjs.com/package/bare-minimum-quadratic-bezier) ([Demo](https://fuddl.github.io/bare-minimum-quadratic-bezier/))
 
 #### Create your own
 
