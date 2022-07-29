@@ -1,5 +1,5 @@
 [build]
-  command = "npm run build && rm -rf node_modules && cd example && npm install && npm run build"
+  command = "npm install && npm run build && rm -rf node_modules && cd example && npm install && npm run build"
 
 [build.environment]
   NODE_ENV = "development"
